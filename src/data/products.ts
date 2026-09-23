@@ -5,17 +5,17 @@ export type Product = {
   price: number;
   image: string;
   description?: string;
-  category: string; // Ubah dari opsional menjadi required (hapus tanda ?)
+  category: string;
 };
 
 export const productsData: Product[] = [
-  // FROZEN FOODS
+  // 1. FROZEN FOOD
   {
     id: 1,
     name: "Frozen Pratha",
     weight: "250 gram",
     price: 21000,
-    image: "/flash1.svg",
+    image: "/paratha.jpg",
     description: "Frozen pratha siap saji, praktis dan lezat.",
     category: "Frozen Food"
   },
@@ -24,7 +24,7 @@ export const productsData: Product[] = [
     name: "Krispi Nugget Ayam",
     weight: "500 gram",
     price: 48000,
-    image: "/flash2.svg",
+    image: "/crispy%20nugget%20ayam.jpg",
     description: "Nugget ayam crispy, terbuat dari daging ayam pilihan.",
     category: "Frozen Food"
   },
@@ -33,7 +33,7 @@ export const productsData: Product[] = [
     name: "Sosis Sapi Keju",
     weight: "250 gram",
     price: 50000,
-    image: "/flash3.svg",
+    image: "/sosis%20sapi.jpg",
     description: "Sosis sapi berkualitas, siap masak untuk berbagai olahan.",
     category: "Frozen Food"
   },
@@ -42,7 +42,7 @@ export const productsData: Product[] = [
     name: "Siomay Ayam",
     weight: "500 gram",
     price: 42000,
-    image: "/flash4.svg",
+    image: "/siomay%20ayam.jpg",
     description: "Dimsum ayam dengan kulit tipis, siap kukus.",
     category: "Frozen Food"
   },
@@ -51,7 +51,7 @@ export const productsData: Product[] = [
     name: "Kentang Goreng",
     weight: "1 kg",
     price: 32000,
-    image: "https://i.pinimg.com/736x/8c/99/f6/8c99f61fa5a4d9aae48e6672a3b51828.jpg",
+    image: "/kentang%20goreng.jpg",
     description: "Kentang goreng beku, crispy dan lezat.",
     category: "Frozen Food"
   },
@@ -60,7 +60,7 @@ export const productsData: Product[] = [
     name: "Bakso Sapi",
     weight: "500 gram",
     price: 30000,
-    image: "https://i.pinimg.com/736x/46/7a/72/467a7215429ca76a4cd29e1bc9d5659c.jpg",
+    image: "/bakso%20sapi.jpg",
     description: "Bakso sapi kenyal, cocok untuk bakso kuah atau goreng.",
     category: "Frozen Food"
   },
@@ -69,7 +69,7 @@ export const productsData: Product[] = [
     name: "Otak-Otak",
     weight: "250 gram",
     price: 20000,
-    image: "https://i.pinimg.com/1200x/94/57/11/9457115f026fe6dd6f60fb9eda880cd0.jpg",
+    image: "/otak%20otak.jpg",
     description: "Otak-otak ikan, siap bakar atau goreng.",
     category: "Frozen Food"
   },
@@ -78,7 +78,7 @@ export const productsData: Product[] = [
     name: "Pizza Mini",
     weight: "500 gram",
     price: 27000,
-    image: "https://i.pinimg.com/736x/39/1f/c5/391fc59b91c242e176efb29d900d7ab0.jpg",
+    image: "/pizza%20mini.jpg",
     description: "Pizza mini frozen, siap dipanggang untuk camilan lezat.",
     category: "Frozen Food"
   },
@@ -87,7 +87,7 @@ export const productsData: Product[] = [
     name: "Cireng Isi",
     weight: "250 gram",
     price: 23000,
-    image: "https://i.pinimg.com/1200x/3b/33/17/3b33179ebe7775b0f52548780736a15e.jpg",
+    image: "/cireng%20isi.jpg",
     description: "Cireng isi ayam pedas, siap goreng.",
     category: "Frozen Food"
   },
@@ -96,18 +96,18 @@ export const productsData: Product[] = [
     name: "Piscok",
     weight: "300 gram",
     price: 18000,
-    image: "https://i.pinimg.com/1200x/8e/96/d6/8e96d65965b73e5122c15e4f74a7dc09.jpg",
+    image: "/piscok.jpg",
     description: "Pisang cokelat frozen, siap goreng untuk camilan manis.",
     category: "Frozen Food"
   },
 
-  // SAYURAN
+  // 2. SAYURAN
   {
     id: 11,
     name: "Wortel",
     weight: "500 gram",
     price: 3000,
-    image: "https://i.pinimg.com/736x/9c/a1/7b/9ca17bb3d143055226e6ceeac70b255b.jpg",
+    image: "/wortel.jpg",
     description: "Wortel segar langsung dari petani. Kaya vitamin A dan serat.",
     category: "Sayuran"
   },
@@ -116,7 +116,7 @@ export const productsData: Product[] = [
     name: "Kentang",
     weight: "1 kg",
     price: 12000,
-    image: "https://i.pinimg.com/736x/1e/0a/a2/1e0aa218671b6e8f9c29648f9b729a28.jpg",
+    image: "/kentang.jpg",
     description: "Kentang lokal berkualitas, cocok untuk berbagai masakan.",
     category: "Sayuran"
   },
@@ -193,146 +193,146 @@ export const productsData: Product[] = [
     category: "Sayuran"
   },
 
-  // BERAS & SEMBAKO
+  // 3. MAKANAN CEPAT SAJI
   {
     id: 21,
-    name: "Beras Maknyuss",
-    weight: "5 kg",
-    price: 78000,
-    image: "https://i.pinimg.com/736x/6a/81/31/6a81314e632ad1ccb12475ddeadde42e.jpg",
-    description: "Beras kualitas premium, pulen dan wangi.",
-    category: "Beras"
+    name: "Burger Sapi Spesial",
+    weight: "250 gram",
+    price: 26000,
+    image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80",
+    description: "Burger daging sapi pilihan dengan keju leleh dan saus spesial.",
+    category: "Makanan Cepat Saji"
   },
   {
     id: 22,
-    name: "Beras Rojolele",
-    weight: "5 kg",
-    price: 75000,
-    image: "https://i.pinimg.com/1200x/38/f2/b5/38f2b5ca429cdc8140c7f0eb328bfc17.jpg",
-    description: "Beras rojolele asli, pulen dan enak.",
-    category: "Beras"
+    name: "Ayam Geprek Crispy",
+    weight: "300 gram",
+    price: 22000,
+    image: "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=600&q=80",
+    description: "Ayam goreng tepung renyah dengan sambal korek pedas gurih.",
+    category: "Makanan Cepat Saji"
   },
   {
     id: 23,
-    name: "Minyak Goreng",
-    weight: "2 liter",
-    price: 35000,
-    image: "https://i.pinimg.com/1200x/b1/ce/60/b1ce602a8777fcee57f81e7234a70e2d.jpg",
-    description: "Minyak goreng berkualitas untuk memasak.",
-    category: "Sembako"
+    name: "French Fries Mayo",
+    weight: "200 gram",
+    price: 18000,
+    image: "/french%20fries%20mayo.jpg",
+    description: "Kentang goreng renyah disajikan dengan saus keju dan mayones gurih.",
+    category: "Makanan Cepat Saji"
   },
   {
     id: 24,
-    name: "Gula Pasir",
-    weight: "1 kg",
-    price: 15000,
-    image: "https://i.pinimg.com/736x/b6/31/ea/b631ea3c2e7d701f54edad1b6f421389.jpg",
-    description: "Gula pasir putih, manis dan berkualitas.",
-    category: "Sembako"
+    name: "Pizza Slice Mozzarella",
+    weight: "250 gram",
+    price: 28000,
+    image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80",
+    description: "Pizza keju mozzarella meleleh dengan saus tomat Italia kaya rasa.",
+    category: "Makanan Cepat Saji"
   },
   {
     id: 25,
-    name: "Tepung Terigu",
-    weight: "1 kg",
-    price: 12000,
-    image: "https://i.pinimg.com/736x/80/e1/e1/80e1e180bf7fe9ce5a08029c2cd6abc7.jpg",
-    description: "Tepung terigu serbaguna untuk berbagai kebutuhan.",
-    category: "Sembako"
+    name: "Hotdog Sosis Jumbo",
+    weight: "200 gram",
+    price: 21000,
+    image: "https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80",
+    description: "Roti lembut dengan sosis sapi jumbo, mustard, dan acar timun segar.",
+    category: "Makanan Cepat Saji"
   },
   {
     id: 26,
-    name: "Telur Ayam",
-    weight: "1 kg",
-    price: 28000,
-    image: "https://i.pinimg.com/736x/d1/d0/6d/d1d06d6fc1036c03ce2ec14b5e2e5019.jpg",
-    description: "Telur ayam segar, protein berkualitas.",
-    category: "Sembako"
+    name: "Kebab Daging Sapi",
+    weight: "250 gram",
+    price: 24000,
+    image: "https://images.unsplash.com/photo-1561651823-34feb02250e4?auto=format&fit=crop&w=600&q=80",
+    description: "Kulit tortilla gurih membungkus daging sapi panggang dan sayur renyah.",
+    category: "Makanan Cepat Saji"
   },
   {
     id: 27,
-    name: "Kecap Manis",
-    weight: "500 ml",
-    price: 18000,
-    image: "https://i.pinimg.com/1200x/3b/c3/05/3bc30503012a2742644e8fa42a5e7e77.jpg",
-    description: "Kecap manis untuk bumbu masakan.",
-    category: "Sembako"
+    name: "Dimsum Mentai Bakar",
+    weight: "300 gram",
+    price: 27000,
+    image: "https://images.unsplash.com/photo-1496116218417-1a781b1c416c?auto=format&fit=crop&w=600&q=80",
+    description: "Dimsum ayam lembut dengan saus mentai gurih dibakar harum.",
+    category: "Makanan Cepat Saji"
   },
   {
     id: 28,
-    name: "Saos Sambal",
-    weight: "500 ml",
-    price: 15000,
-    image: "https://i.pinimg.com/736x/19/cf/13/19cf137e053b4ef4aef5571a0b302042.jpg",
-    description: "Saos sambal pedas mantap.",
-    category: "Sembako"
+    name: "Bento Chicken Katsu",
+    weight: "400 gram",
+    price: 32000,
+    image: "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=600&q=80",
+    description: "Paket nasi lengkap dengan fillet ayam katsu renyah dan salad segar.",
+    category: "Makanan Cepat Saji"
   },
+
+  // 4. MINUMAN INSTAN
   {
     id: 29,
-    name: "Mie Instan",
-    weight: "1 dus",
-    price: 45000,
-    image: "https://i.pinimg.com/1200x/78/89/2c/78892cf447c5078c885aaccf234b3ec3.jpg",
-    description: "Mie instan favorit keluarga.",
-    category: "Sembako"
+    name: "Kopi Bubuk Robusta",
+    weight: "200 gram",
+    price: 25000,
+    image: "/kopi%20bubuk%20robusta.jpg",
+    description: "Kopi bubuk robusta murni pilihan, aroma pekat siap seduh.",
+    category: "Minuman Instan"
   },
   {
     id: 30,
-    name: "Kopi Bubuk",
-    weight: "200 gram",
-    price: 25000,
-    image: "https://i.pinimg.com/736x/a9/9e/c8/a99ec8cb4e1cd3a5a85152bcd0e09c65.jpg",
-    description: "Kopi bubuk asli, aroma khas.",
-    category: "Minuman"
+    name: "Teh Celup",
+    weight: "1 box (25 kantong)",
+    price: 12000,
+    image: "/teh%20celup.jpg",
+    description: "Teh celup dengan wangi aroma melati alami yang menyegarkan.",
+    category: "Minuman Instan"
   },
-
-  // MINUMAN
   {
     id: 31,
-    name: "Susu UHT",
-    weight: "1 liter",
-    price: 15000,
-    image: "https://i.pinimg.com/736x/d5/67/35/d56735aabfd5438113f4903a66a8f5b7.jpg",
-    description: "Susu UHT segar, kaya kalsium.",
-    category: "Minuman"
+    name: "Jahe Merah",
+    weight: "1 box (10 sachet)",
+    price: 22000,
+    image: "/jahe%20merah.jpg",
+    description: "Minuman serbuk jahe merah hangat dengan gula aren, menjaga kebugaran tubuh.",
+    category: "Minuman Instan"
   },
   {
     id: 32,
-    name: "Teh Botol",
-    weight: "500 ml",
-    price: 5000,
-    image: "https://i.pinimg.com/736x/28/23/df/2823dffed0678e426c678fbc42409687.jpg",
-    description: "Teh botol siap minum, segar.",
-    category: "Minuman"
+    name: "Coklat Bubuk Malt",
+    weight: "1 pack (10 sachet)",
+    price: 24000,
+    image: "/coklat%20bubuk%20malt.jpg",
+    description: "Minuman serbuk coklat malt kaya energi dan vitamin, nikmat diseduh hangat atau dingin.",
+    category: "Minuman Instan"
   },
   {
     id: 33,
-    name: "Air Mineral",
-    weight: "600 ml",
-    price: 3000,
-    image: "https://i.pinimg.com/736x/f7/15/62/f71562e1099d6d8a7fa5ba1bcfb6f587.jpg",
-    description: "Air mineral murni, segar.",
-    category: "Minuman"
+    name: "Susu Bubuk",
+    weight: "400 gram",
+    price: 45000,
+    image: "/susu%20bubuk.jpg",
+    description: "Susu bubuk full cream bernutrisi tinggi dan gurih, mudah larut dalam air hangat.",
+    category: "Minuman Instan"
   },
   {
     id: 34,
-    name: "Jus Jeruk",
-    weight: "250 ml",
-    price: 8000,
-    image: "https://i.pinimg.com/736x/fd/37/bb/fd37bb31b3aecdc433b6267e0b71a627.jpg",
-    description: "Jus jeruk asli, vitamin C.",
-    category: "Minuman"
+    name: "Sereal Bubuk",
+    weight: "1 pack (10 sachet)",
+    price: 20000,
+    image: "/sereal%20bubuk.jpg",
+    description: "Minuman sereal dan oat bergizi tinggi, pilihan tepat sarapan praktis mengenyangkan.",
+    category: "Minuman Instan"
   },
   {
     id: 35,
-    name: "Kopi Sachet",
-    weight: "1 dus (20 pcs)",
-    price: 20000,
-    image: "https://i.pinimg.com/736x/be/95/f2/be95f248ab662d1a2c2523944a9d10fa.jpg",
-    description: "Kopi sachet praktis, 20 pcs.",
-    category: "Minuman"
+    name: "Matcha Latte Bubuk",
+    weight: "1 box (5 sachet)",
+    price: 28000,
+    image: "/matcha%20latte%20bubuk.jpg",
+    description: "Serbuk matcha latte lembut perpaduan teh hijau Jepang dan susu creamy siap seduh.",
+    category: "Minuman Instan"
   },
 
-  // SNACKS
+  // 5. SNACKS
   {
     id: 36,
     name: "Keripik Singkong",
@@ -396,79 +396,78 @@ export const productsData: Product[] = [
     description: "Wafer cokelat crispy, lezat.",
     category: "Snacks"
   },
-
-  // KEBUTUHAN RUMAH
+  // 6. DAGING MENTAH SEGAR LOKAL
   {
     id: 43,
-    name: "Sabun Mandi",
-    weight: "100 gram",
-    price: 5000,
-    image: "https://i.pinimg.com/736x/9e/60/ca/9e60ca31ea54ec1c575143fe85a00651.jpg",
-    description: "Sabun mandi segar, wangi tahan lama.",
-    category: "Kebutuhan Rumah"
+    name: "Daging Sapi Potong Rendang Mentah",
+    weight: "500 gram",
+    price: 72000,
+    image: "/daging%20rendang.jpg",
+    description: "Daging sapi mentah segar potongan dadu siap masak, serat padat alami, sangat pas untuk rendang, semur, dan gulai.",
+    category: "Daging"
   },
   {
     id: 44,
-    name: "Pasta Gigi",
-    weight: "200 gram",
-    price: 8000,
-    image: "https://i.pinimg.com/1200x/7e/52/55/7e5255ab2ca67531c6fa900669a2272f.jpg",
-    description: "Pasta gigi dengan formula aktif melindungi gigi.",
-    category: "Kebutuhan Rumah"
+    name: "Daging Sapi Has Mentah Segar",
+    weight: "500 gram",
+    price: 82000,
+    image: "/daging%20sapi.jpg",
+    description: "Steak daging sapi mentah segar pilihan berkualitas super empuk, dipotong harian langsung dari rumah potong lokal, higienis dan bersih.",
+    category: "Daging"
   },
   {
     id: 45,
-    name: "Sikat Gigi",
-    weight: "1 pcs",
-    price: 5000,
-    image: "https://i.pinimg.com/1200x/a7/a9/ac/a7a9ac7a9077f56f07512c87fa6ec94d.jpg",
-    description: "Sikat gigi lembut, nyaman di mulut.",
-    category: "Kebutuhan Rumah"
+    name: "Daging Sapi Slice Mentah",
+    weight: "500 gram",
+    price: 75000,
+    image: "/daging%20slice%20sapi.jpg",
+    description: "Irisan tipis daging sapi mentah berlemak gurih dengan marbling merata, cocok untuk sukiyaki, shabu-shabu, dan yakiniku BBQ.",
+    category: "Daging"
   },
   {
     id: 46,
-    name: "Shampo",
-    weight: "100 ml",
-    price: 7000,
-    image: "https://i.pinimg.com/736x/7d/c9/1e/7dc91ebd6f18a22721256dc83a3e266d.jpg",
-    description: "Shampo dengan vitamin untuk rambut sehat.",
-    category: "Kebutuhan Rumah"
+    name: "Daging Iga Kambing / Mutton Mentah",
+    weight: "500 gram",
+    price: 78000,
+    image: "/daging%20mutton%20sapi.jpg",
+    description: "Potongan iga daging kambing/mutton mentah segar bertulang, aroma segar alami, sempurna untuk tongseng, kari, dan bakar madu.",
+    category: "Daging"
   },
   {
     id: 47,
-    name: "Sabun Cuci Piring",
-    weight: "500 ml",
-    price: 10000,
-    image: "https://i.pinimg.com/736x/ed/7c/99/ed7c999af0de5b7a07a0c072f06e60bc.jpg",
-    description: "Sabun cuci piring, bersihkan lemak.",
-    category: "Kebutuhan Rumah"
+    name: "Dada Ayam Filet Mentah Segar",
+    weight: "1 kg",
+    price: 46000,
+    image: "/dada%20ayam%20filet.jpg",
+    description: "Dada ayam fillet mentah segar tanpa tulang dan kulit, dipotong higienis harian dari peternak lokal, tinggi protein.",
+    category: "Daging"
   },
   {
     id: 48,
-    name: "Deterjen",
-    weight: "500 gram",
-    price: 15000,
-    image: "https://i.pinimg.com/736x/e8/42/87/e84287b225075290d41cd533020e8ed9.jpg",
-    description: "Deterjen bubuk, wangi tahan lama.",
-    category: "Kebutuhan Rumah"
+    name: "Paha Daging Ayam Mentah Segar",
+    weight: "1 kg",
+    price: 42000,
+    image: "/paha%20daging%20ayam.jpg",
+    description: "Paha ayam bawah (drumstick) mentah segar dan juicy, bersih siap bumbu untuk ayam goreng krispi atau ungkep rempah.",
+    category: "Daging"
   },
   {
     id: 49,
-    name: "Pembersih Lantai",
-    weight: "500 ml",
-    price: 12000,
-    image: "https://i.pinimg.com/736x/55/94/1a/55941a465747f99f5346ba6da2c15e1a.jpg",
-    description: "Pembersih lantai, wangi dan bersih.",
-    category: "Kebutuhan Rumah"
+    name: "Iga Sapi Mentah Segar",
+    weight: "1 kg",
+    price: 98000,
+    image: "https://images.unsplash.com/photo-1544025162-d76694265947?w=600",
+    description: "Potongan tulang iga sapi mentah segar dengan lapisan daging tebal dan gurih, bersih tanpa bahan pengawet.",
+    category: "Daging"
   },
   {
     id: 50,
-    name: "Pengharum Ruangan",
-    weight: "200 ml",
-    price: 15000,
-    image: "https://i.pinimg.com/736x/d2/f8/87/d2f8878c07ea9b46e3ae635ad6711cd9.jpg",
-    description: "Pengharum ruangan, wangi tahan lama.",
-    category: "Kebutuhan Rumah"
+    name: "Bebek Mentah Utuh Segar",
+    weight: "1 ekor (1.2kg)",
+    price: 58000,
+    image: "https://images.unsplash.com/photo-1516467508483-a7212febe31a?w=600",
+    description: "Karkas bebek potong mentah segar utuh, sudah bersih bulu dan jeroan, aroma segar alami siap diolah.",
+    category: "Daging"
   }
 ];
 
@@ -480,5 +479,5 @@ export const getAllCategories = (): string[] => {
 
 // Fungsi untuk mendapatkan produk berdasarkan kategori
 export const getProductsByCategory = (category: string): Product[] => {
-  return productsData.filter(product => product.category === category);
+  return productsData.filter(product => product.category.toLowerCase() === category.toLowerCase());
 };

@@ -12,7 +12,9 @@ import {
   Clock,
   AlertCircle,
   Tag,
-  X
+  X,
+  Sparkles,
+  Check
 } from "lucide-react";
 import { validatePromoCode, calculateDiscount } from "../context/promo";
 import type { Promo } from "../context/promo";
@@ -25,22 +27,22 @@ const bankData = {
   bca: {
     name: "Bank BCA",
     accountNumber: "1234567890",
-    accountName: "PT Nusantara Mart",
+    accountName: "PT Minimo Mart",
   },
   bri: {
     name: "Bank BRI",
     accountNumber: "0987654321",
-    accountName: "PT Nusantara Mart",
+    accountName: "PT Minimo Mart",
   },
   mandiri: {
     name: "Bank Mandiri",
     accountNumber: "1122334455",
-    accountName: "PT Nusantara Mart",
+    accountName: "PT Minimo Mart",
   },
   bni: {
     name: "Bank BNI",
     accountNumber: "5544332211",
-    accountName: "PT Nusantara Mart",
+    accountName: "PT Minimo Mart",
   }
 };
 
@@ -64,7 +66,7 @@ export default function Checkout() {
 
   // Alamat tersimpan
   const savedAddresses = [
-    { id: 'home', label: 'Rumah', name: 'Ferdi', phone: '08123456789', address: 'Jl. Kemerdekaan No. 45', city: 'Sidoarjo', postalCode: '61256', notes: 'Pagar warna putih' },
+    { id: 'home', label: 'Rumah', name: 'Ferdi', phone: '08123456789', address: 'Jl. Kemerdekaan No. 45', city: 'Jakarta Selatan', postalCode: '12190', notes: 'Pagar warna putih' },
     { id: 'office', label: 'Kantor', name: 'Ferdi', phone: '08123456789', address: 'Gedung Tech Lt. 3, Jl. Pahlawan', city: 'Surabaya', postalCode: '60111', notes: 'Titip di satpam' }
   ];
 
@@ -190,9 +192,6 @@ export default function Checkout() {
       }
     });
 
-    // Tampilkan pesan sukses
-    alert("Pembayaran berhasil! Pesanan Anda telah disimpan di history.");
-    
     // Kosongkan keranjang
     clearCart();
     
@@ -209,7 +208,7 @@ export default function Checkout() {
           <p className="text-gray-600 mb-6">Silahkan tambahkan produk terlebih dahulu</p>
           <button
             onClick={() => navigate("/")}
-            className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full font-medium transition"
+            className="bg-forest hover:bg-forest-dark text-white px-6 py-3 rounded-full font-medium transition shadow-sm"
           >
             Kembali Berbelanja
           </button>
@@ -225,7 +224,7 @@ export default function Checkout() {
         {/* Tombol Kembali */}
         <button
           onClick={() => step === "payment" ? navigate(-1) : setStep("payment")}
-          className="flex items-center gap-2 text-gray-600 hover:text-green-600 mb-6 transition"
+          className="flex items-center gap-2 text-gray-600 hover:text-forest mb-6 transition font-medium"
         >
           <ArrowLeft size={20} />
           <span className="text-sm md:text-base">
@@ -236,25 +235,25 @@ export default function Checkout() {
         {/* Progress Step */}
         <div className="flex items-center justify-center mb-8">
           <div className="flex items-center">
-            <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
-              step === "payment" ? "bg-green-500 text-white" : "bg-green-100 text-green-600"
+            <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm ${
+              step === "payment" ? "bg-forest text-white" : "bg-forest-soft text-forest"
             }`}>
               1
             </div>
             <div className={`w-20 h-1 ${
-              step === "confirmation" ? "bg-green-500" : "bg-gray-200"
+              step === "confirmation" ? "bg-forest" : "bg-gray-200"
             }`}></div>
-            <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
-              step === "confirmation" ? "bg-green-500 text-white" : "bg-gray-200 text-gray-500"
+            <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm ${
+              step === "confirmation" ? "bg-forest text-white" : "bg-gray-200 text-gray-500"
             }`}>
               2
             </div>
           </div>
           <div className="ml-4 flex gap-8">
-            <span className={step === "payment" ? "text-green-600 font-semibold" : "text-gray-400"}>
+            <span className={step === "payment" ? "text-forest font-bold" : "text-gray-400"}>
               Pembayaran
             </span>
-            <span className={step === "confirmation" ? "text-green-600 font-semibold" : "text-gray-400"}>
+            <span className={step === "confirmation" ? "text-forest font-bold" : "text-gray-400"}>
               Konfirmasi
             </span>
           </div>
@@ -262,9 +261,9 @@ export default function Checkout() {
 
         {/* Notifikasi Promo */}
         {promoSuccess && (
-          <div className="mb-4 p-3 bg-green-100 border border-green-400 text-green-700 rounded-lg flex items-center gap-2">
-            <CheckCircle size={18} className="text-green-600" />
-            <span className="text-sm">{promoSuccess}</span>
+          <div className="mb-4 p-3 bg-forest-soft border border-forest/20 text-forest rounded-lg flex items-center gap-2">
+            <CheckCircle size={18} className="text-forest" />
+            <span className="text-sm font-medium">{promoSuccess}</span>
           </div>
         )}
 
@@ -287,11 +286,11 @@ export default function Checkout() {
                           setSelectedAddressId(addr.id);
                           setFormData({...addr, email: formData.email});
                         }}
-                        className={`p-3 border-2 rounded-xl cursor-pointer transition ${selectedAddressId === addr.id ? 'border-green-500 bg-green-50' : 'border-gray-200 hover:border-green-300'}`}
+                        className={`p-3 border-2 rounded-xl cursor-pointer transition ${selectedAddressId === addr.id ? 'border-forest bg-forest-soft' : 'border-gray-200 hover:border-forest/40'}`}
                       >
                         <div className="flex justify-between items-center mb-1">
                           <span className="font-bold text-sm">{addr.label}</span>
-                          {selectedAddressId === addr.id && <CheckCircle size={16} className="text-green-500" />}
+                          {selectedAddressId === addr.id && <CheckCircle size={16} className="text-forest" />}
                         </div>
                         <p className="text-xs text-gray-600 line-clamp-1">{addr.address}</p>
                       </div>
@@ -301,7 +300,7 @@ export default function Checkout() {
                           setSelectedAddressId('new');
                           setFormData({ name: "", email: formData.email, phone: "", address: "", city: "", postalCode: "", notes: "" });
                         }}
-                        className={`p-3 border-2 border-dashed rounded-xl cursor-pointer flex flex-col items-center justify-center text-gray-500 hover:text-green-600 hover:border-green-300 transition ${selectedAddressId === 'new' ? 'border-green-500 text-green-600 bg-green-50' : 'border-gray-300'}`}
+                        className={`p-3 border-2 border-dashed rounded-xl cursor-pointer flex flex-col items-center justify-center text-gray-500 hover:text-forest hover:border-forest/40 transition ${selectedAddressId === 'new' ? 'border-forest text-forest bg-forest-soft' : 'border-gray-300'}`}
                       >
                         <span className="font-bold text-sm">+ Alamat Baru</span>
                     </div>
@@ -320,7 +319,7 @@ export default function Checkout() {
                         required
                         value={formData.name}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-forest focus:ring-1 focus:ring-forest"
                         placeholder="Masukkan nama lengkap"
                       />
                     </div>
@@ -335,7 +334,7 @@ export default function Checkout() {
                         required
                         value={formData.email}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-forest focus:ring-1 focus:ring-forest"
                         placeholder="contoh@email.com"
                       />
                     </div>
@@ -351,7 +350,7 @@ export default function Checkout() {
                       required
                       value={formData.phone}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-forest focus:ring-1 focus:ring-forest"
                       placeholder="08xxxxxxxxxx"
                     />
                   </div>
@@ -366,7 +365,7 @@ export default function Checkout() {
                       rows={3}
                       value={formData.address}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-forest focus:ring-1 focus:ring-forest"
                       placeholder="Masukkan alamat lengkap"
                     />
                   </div>
@@ -382,7 +381,7 @@ export default function Checkout() {
                         required
                         value={formData.city}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-forest focus:ring-1 focus:ring-forest"
                         placeholder="Kota"
                       />
                     </div>
@@ -397,7 +396,7 @@ export default function Checkout() {
                         required
                         value={formData.postalCode}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-forest focus:ring-1 focus:ring-forest"
                         placeholder="Kode Pos"
                       />
                     </div>
@@ -412,14 +411,14 @@ export default function Checkout() {
                       rows={2}
                       value={formData.notes}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-forest focus:ring-1 focus:ring-forest"
                       placeholder="Catatan untuk kurir (opsional)"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full bg-green-500 hover:bg-green-600 text-white py-3 rounded-lg font-semibold transition mt-4"
+                    className="w-full bg-forest hover:bg-forest-dark text-white py-3 rounded-lg font-semibold transition mt-4 shadow-sm"
                   >
                     Lanjutkan ke Pembayaran
                   </button>
@@ -453,7 +452,7 @@ export default function Checkout() {
                       {!showPromoInput ? (
                         <button
                           onClick={() => setShowPromoInput(true)}
-                          className="flex items-center gap-2 text-green-600 hover:text-green-700 transition"
+                          className="flex items-center gap-2 text-forest hover:text-forest-dark transition"
                         >
                           <Tag size={16} />
                           <span className="text-sm font-medium">Punya kode promo?</span>
@@ -469,12 +468,12 @@ export default function Checkout() {
                               value={promoCode}
                               onChange={(e) => setPromoCode(e.target.value.toUpperCase())}
                               placeholder="Contoh: SAYUR20"
-                              className="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-green-500 uppercase"
+                              className="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-forest focus:ring-1 focus:ring-forest uppercase"
                               autoFocus
                             />
                             <button
                               onClick={handleApplyPromo}
-                              className="px-4 py-2 bg-green-500 text-white rounded-lg text-sm hover:bg-green-600 transition whitespace-nowrap"
+                              className="px-4 py-2 bg-forest text-white rounded-lg text-sm hover:bg-forest-dark transition whitespace-nowrap font-medium"
                             >
                               Gunakan
                             </button>
@@ -492,11 +491,11 @@ export default function Checkout() {
                       )}
                     </>
                   ) : (
-                    <div className="bg-green-50 border border-green-200 rounded-lg p-3">
+                    <div className="bg-honey-soft/50 border border-honey/30 rounded-lg p-3">
                       <div className="flex items-center justify-between mb-2">
                         <div className="flex items-center gap-2">
-                          <Tag size={16} className="text-green-600" />
-                          <span className="font-semibold text-green-700 text-sm">
+                          <Tag size={16} className="text-honey-dark" />
+                          <span className="font-bold text-gray-900 text-sm">
                             {appliedPromo.code}
                           </span>
                         </div>
@@ -508,7 +507,7 @@ export default function Checkout() {
                           <X size={16} />
                         </button>
                       </div>
-                      <p className="text-xs text-green-600">
+                      <p className="text-xs text-honey-dark font-medium">
                         {appliedPromo.discountType === "percentage" 
                           ? `Diskon ${appliedPromo.discountValue}%`
                           : `Diskon Rp ${appliedPromo.discountValue.toLocaleString('id-ID')}`
@@ -531,7 +530,7 @@ export default function Checkout() {
                   </div>
                   
                   {discount > 0 && (
-                    <div className="flex justify-between text-green-600">
+                    <div className="flex justify-between text-forest font-medium">
                       <span>Diskon</span>
                       <span>- Rp {formatRupiah(discount)}</span>
                     </div>
@@ -554,15 +553,16 @@ export default function Checkout() {
                   
                   <div className="flex justify-between text-lg font-bold pt-2 border-t">
                     <span>Total</span>
-                    <span className="text-green-600">Rp {formatRupiah(totalPayment)}</span>
+                    <span className="text-forest font-black">Rp {formatRupiah(totalPayment)}</span>
                   </div>
                 </div>
 
                 {/* Info Hemat jika ada diskon */}
                 {discount > 0 && (
-                  <div className="mt-4 p-2 bg-green-50 rounded-lg text-center">
-                    <p className="text-xs text-green-700">
-                      🎉 Anda hemat Rp {formatRupiah(discount)} dengan promo {appliedPromo?.code}
+                  <div className="mt-4 p-2.5 bg-honey-soft/70 border border-honey/30 rounded-lg text-center flex items-center justify-center gap-1.5">
+                    <Sparkles size={14} className="text-honey-dark shrink-0" />
+                    <p className="text-xs text-honey-dark font-semibold">
+                      Anda hemat Rp {formatRupiah(discount)} dengan promo {appliedPromo?.code}
                     </p>
                   </div>
                 )}
@@ -580,20 +580,20 @@ export default function Checkout() {
                 {/* QRIS */}
                 <div 
                   className={`border-2 rounded-xl p-4 mb-4 cursor-pointer transition ${
-                    paymentMethod === "qris" ? "border-green-500 bg-green-50" : "border-gray-200 hover:border-green-300"
+                    paymentMethod === "qris" ? "border-forest bg-forest-soft" : "border-gray-200 hover:border-forest/40"
                   }`} 
                   onClick={() => setPaymentMethod("qris")}
                 >
                   <div className="flex items-center gap-3">
-                    <QrCode className="text-green-600" size={24} />
+                    <QrCode className="text-forest" size={24} />
                     <div className="flex-1">
-                      <h3 className="font-semibold">QRIS</h3>
+                      <h3 className="font-semibold text-gray-900">QRIS</h3>
                       <p className="text-sm text-gray-500">Pembayaran via QRIS (semua aplikasi perbankan)</p>
                     </div>
                     <div className={`w-5 h-5 rounded-full border-2 ${
-                      paymentMethod === "qris" ? "border-green-500 bg-green-500" : "border-gray-300"
+                      paymentMethod === "qris" ? "border-forest bg-forest flex items-center justify-center" : "border-gray-300"
                     }`}>
-                      {paymentMethod === "qris" && <CheckCircle size={16} className="text-white" />}
+                      {paymentMethod === "qris" && <CheckCircle size={14} className="text-white" />}
                     </div>
                   </div>
 
@@ -606,7 +606,7 @@ export default function Checkout() {
                         <p className="text-sm text-gray-600 text-center">
                           Scan QR Code di atas menggunakan aplikasi perbankan Anda
                         </p>
-                        <p className="text-xs text-gray-500 mt-2">
+                        <p className="text-xs text-gray-500 mt-2 font-medium">
                           Total pembayaran: Rp {formatRupiah(totalPayment)}
                         </p>
                       </div>
@@ -619,20 +619,20 @@ export default function Checkout() {
                   <div 
                     key={key}
                     className={`border-2 rounded-xl p-4 mb-4 cursor-pointer transition ${
-                      paymentMethod === key ? "border-green-500 bg-green-50" : "border-gray-200 hover:border-green-300"
+                      paymentMethod === key ? "border-forest bg-forest-soft" : "border-gray-200 hover:border-forest/40"
                     }`}
                     onClick={() => setPaymentMethod(key as PaymentMethod)}
                   >
                     <div className="flex items-center gap-3">
-                      <Building className="text-green-600" size={24} />
+                      <Building className="text-forest" size={24} />
                       <div className="flex-1">
-                        <h3 className="font-semibold">{bank.name}</h3>
+                        <h3 className="font-semibold text-gray-900">{bank.name}</h3>
                         <p className="text-sm text-gray-500">Transfer via {bank.name}</p>
                       </div>
                       <div className={`w-5 h-5 rounded-full border-2 ${
-                        paymentMethod === key ? "border-green-500 bg-green-500" : "border-gray-300"
+                        paymentMethod === key ? "border-forest bg-forest flex items-center justify-center" : "border-gray-300"
                       }`}>
-                        {paymentMethod === key && <CheckCircle size={16} className="text-white" />}
+                        {paymentMethod === key && <CheckCircle size={14} className="text-white" />}
                       </div>
                     </div>
 
@@ -656,7 +656,10 @@ export default function Checkout() {
                             </div>
                           </div>
                           {copied === key && (
-                            <p className="text-xs text-green-600">✓ Nomor rekening disalin</p>
+                            <p className="text-xs text-forest font-semibold flex items-center gap-1">
+                              <Check size={14} className="text-forest shrink-0" />
+                              <span>Nomor rekening disalin</span>
+                            </p>
                           )}
                           <div className="flex justify-between">
                             <span className="text-gray-600">Atas Nama</span>
@@ -664,7 +667,7 @@ export default function Checkout() {
                           </div>
                           <div className="mt-3 pt-3 border-t">
                             <p className="text-sm text-gray-600">
-                              Total Pembayaran: <span className="font-bold text-green-600">Rp {formatRupiah(totalPayment)}</span>
+                              Total Pembayaran: <span className="font-black text-forest">Rp {formatRupiah(totalPayment)}</span>
                             </p>
                           </div>
                         </div>
@@ -677,7 +680,7 @@ export default function Checkout() {
                 <div className="mt-6 space-y-3">
                   <button
                     onClick={handlePaymentComplete}
-                    className="w-full bg-green-500 hover:bg-green-600 text-white py-3 rounded-lg font-semibold transition"
+                    className="w-full bg-forest hover:bg-forest-dark text-white py-3 rounded-lg font-bold transition shadow-sm"
                   >
                     Konfirmasi Pembayaran
                   </button>
@@ -709,7 +712,7 @@ export default function Checkout() {
                   </div>
                   
                   {discount > 0 && (
-                    <div className="flex justify-between text-sm text-green-600">
+                    <div className="flex justify-between text-sm text-forest font-medium">
                       <span>Diskon ({appliedPromo?.code})</span>
                       <span>- Rp {formatRupiah(discount)}</span>
                     </div>
@@ -732,7 +735,7 @@ export default function Checkout() {
                   
                   <div className="flex justify-between font-bold pt-2 border-t">
                     <span>Total</span>
-                    <span className="text-green-600">Rp {formatRupiah(totalPayment)}</span>
+                    <span className="text-forest font-black">Rp {formatRupiah(totalPayment)}</span>
                   </div>
                 </div>
 

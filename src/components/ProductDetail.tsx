@@ -70,14 +70,14 @@ export default function ProductDetail() {
         {/* Tombol Kembali */}
         <button
           onClick={() => navigate(-1)}
-          className="flex items-center gap-2 text-gray-600 hover:text-green-600 mb-6 transition"
+          className="flex items-center gap-2 text-gray-600 hover:text-forest mb-6 transition cursor-pointer"
         >
           <ArrowLeft size={20} />
-          <span className="text-sm md:text-base">Kembali ke Produk</span>
+          <span className="text-sm md:text-base font-medium">Kembali ke Produk</span>
         </button>
 
         {/* Main Content */}
-        <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+        <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-mist-border">
           
           {/* Grid untuk layout detail produk */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-4 md:p-8">
@@ -85,7 +85,7 @@ export default function ProductDetail() {
             {/* Bagian Kiri - Gallery Gambar */}
             <div className="space-y-4">
               {/* Gambar Utama */}
-              <div className="bg-gray-50 rounded-xl overflow-hidden h-[300px] md:h-[400px] flex items-center justify-center p-4">
+              <div className="bg-mist-surface/50 rounded-2xl overflow-hidden h-[300px] md:h-[400px] flex items-center justify-center p-4 border border-mist-border">
                 <img
                   src={productImages[selectedImage]}
                   alt={product.name}
@@ -99,10 +99,10 @@ export default function ProductDetail() {
                   <button
                     key={index}
                     onClick={() => setSelectedImage(index)}
-                    className={`bg-gray-50 rounded-lg overflow-hidden h-16 md:h-20 p-2 border-2 transition ${
+                    className={`bg-mist-surface/50 rounded-xl overflow-hidden h-16 md:h-20 p-2 border-2 transition cursor-pointer ${
                       selectedImage === index 
-                        ? 'border-green-500' 
-                        : 'border-transparent hover:border-gray-300'
+                        ? 'border-forest shadow-xs' 
+                        : 'border-transparent hover:border-mist-border'
                     }`}
                   >
                     <img
@@ -133,7 +133,7 @@ export default function ProductDetail() {
                     <Star
                       key={star}
                       size={18}
-                      className="fill-yellow-400 text-yellow-400"
+                      className="fill-honey text-honey"
                     />
                   ))}
                 </div>
@@ -141,8 +141,8 @@ export default function ProductDetail() {
               </div>
 
               {/* Harga dengan format Rupiah yang benar */}
-              <div className="border-y border-gray-100 py-4">
-                <p className="text-3xl md:text-4xl font-bold text-green-600">
+              <div className="border-y border-mist-border py-4">
+                <p className="text-3xl md:text-4xl font-extrabold text-forest">
                   Rp {formatRupiah(product.price)}
                 </p>
                 <p className="text-sm text-gray-500 mt-1">
@@ -152,18 +152,18 @@ export default function ProductDetail() {
 
               {/* Deskripsi */}
               <div>
-                <h3 className="font-semibold text-gray-800 mb-2">Deskripsi Produk</h3>
+                <h3 className="font-bold text-gray-900 mb-2">Deskripsi Produk</h3>
                 <p className="text-gray-600 text-sm md:text-base leading-relaxed">
                   {product.description || 
-                    `${product.name} berkualitas tinggi, dipilih langsung dari petani lokal terbaik. 
+                    `${product.name} berkualitas tinggi, dipilih langsung dari produsen lokal terbaik. 
                     Dikemas secara higienis dan siap dikirim ke rumah Anda. Cocok untuk konsumsi sehari-hari 
                     maupun kebutuhan dapur Anda.`}
                 </p>
               </div>
 
               {/* Spesifikasi */}
-              <div className="bg-gray-50 rounded-xl p-4 space-y-2">
-                <h3 className="font-semibold text-gray-800 mb-2">Spesifikasi Produk</h3>
+              <div className="bg-mist-surface/60 rounded-xl p-4 space-y-2 border border-mist-border">
+                <h3 className="font-bold text-gray-900 mb-2">Spesifikasi Produk</h3>
                 <div className="grid grid-cols-2 gap-2 text-sm">
                   <span className="text-gray-500">Berat</span>
                   <span className="text-gray-800 font-medium">{product.weight}</span>
@@ -172,7 +172,7 @@ export default function ProductDetail() {
                   <span className="text-gray-800 font-medium">{product.category || "Produk Lokal"}</span>
                   
                   <span className="text-gray-500">Stok</span>
-                  <span className="text-green-600 font-medium">Tersedia</span>
+                  <span className="text-forest font-bold">Tersedia</span>
                   
                   <span className="text-gray-500">Asal</span>
                   <span className="text-gray-800 font-medium">Indonesia</span>
@@ -182,17 +182,17 @@ export default function ProductDetail() {
               {/* Quantity Selector */}
               <div className="flex items-center gap-4">
                 <span className="font-medium text-gray-700">Jumlah:</span>
-                <div className="flex items-center border border-gray-200 rounded-full">
+                <div className="flex items-center border border-mist-border rounded-full bg-white">
                   <button
                     onClick={decrease}
-                    className="w-10 h-10 flex items-center justify-center text-gray-500 hover:text-green-600"
+                    className="w-10 h-10 flex items-center justify-center text-gray-500 hover:text-forest cursor-pointer"
                   >
                     <Minus size={16} />
                   </button>
-                  <span className="w-12 text-center font-medium">{qty}</span>
+                  <span className="w-12 text-center font-bold text-gray-900">{qty}</span>
                   <button
                     onClick={increase}
-                    className="w-10 h-10 flex items-center justify-center text-gray-500 hover:text-green-600"
+                    className="w-10 h-10 flex items-center justify-center text-gray-500 hover:text-forest cursor-pointer"
                   >
                     <Plus size={16} />
                   </button>
@@ -209,54 +209,60 @@ export default function ProductDetail() {
                     addToCart(product, qty);
                     alert('Produk berhasil ditambahkan ke keranjang!');
                   }}
-                  className="flex-1 bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full font-medium transition flex items-center justify-center gap-2"
+                  className="flex-1 bg-forest hover:bg-forest-dark text-white px-6 py-3.5 rounded-full font-bold transition flex items-center justify-center gap-2 shadow-md hover:shadow-forest/25 cursor-pointer active:scale-98"
                 >
                   <ShoppingCart size={18} />
                   Tambah ke Keranjang
                 </button>
                 
-                <button className="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-800 px-6 py-3 rounded-full font-medium transition">
+                <button 
+                  onClick={() => {
+                    addToCart(product, qty);
+                    navigate('/checkout');
+                  }}
+                  className="flex-1 bg-honey hover:bg-honey-dark text-gray-950 px-6 py-3.5 rounded-full font-bold transition shadow-md hover:shadow-honey/25 cursor-pointer active:scale-98"
+                >
                   Beli Sekarang
                 </button>
               </div>
 
               {/* Secondary Buttons */}
               <div className="flex items-center justify-center gap-6 pt-2">
-                <button className="flex items-center gap-2 text-gray-500 hover:text-green-600 transition">
+                <button className="flex items-center gap-2 text-gray-500 hover:text-forest transition cursor-pointer">
                   <Heart size={18} />
-                  <span className="text-sm">Favorit</span>
+                  <span className="text-sm font-medium">Favorit</span>
                 </button>
-                <button className="flex items-center gap-2 text-gray-500 hover:text-green-600 transition">
+                <button className="flex items-center gap-2 text-gray-500 hover:text-forest transition cursor-pointer">
                   <Share2 size={18} />
-                  <span className="text-sm">Bagikan</span>
+                  <span className="text-sm font-medium">Bagikan</span>
                 </button>
               </div>
             </div>
           </div>
 
           {/* Info Pengiriman & Layanan */}
-          <div className="border-t border-gray-100 p-4 md:p-8">
+          <div className="border-t border-mist-border p-4 md:p-8 bg-mist-surface/30">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="flex items-start gap-3">
-                <Truck className="text-green-500 flex-shrink-0" size={24} />
+                <Truck className="text-forest flex-shrink-0" size={24} />
                 <div>
-                  <h4 className="font-semibold text-gray-800">Gratis Pengiriman</h4>
+                  <h4 className="font-bold text-gray-900">Gratis Pengiriman</h4>
                   <p className="text-sm text-gray-500">Untuk pembelian minimal Rp 50.000</p>
                 </div>
               </div>
               
               <div className="flex items-start gap-3">
-                <Shield className="text-green-500 flex-shrink-0" size={24} />
+                <Shield className="text-forest flex-shrink-0" size={24} />
                 <div>
-                  <h4 className="font-semibold text-gray-800">Garansi Kualitas</h4>
+                  <h4 className="font-bold text-gray-900">Garansi Kualitas</h4>
                   <p className="text-sm text-gray-500">Produk segar atau uang kembali</p>
                 </div>
               </div>
               
               <div className="flex items-start gap-3">
-                <RefreshCw className="text-green-500 flex-shrink-0" size={24} />
+                <RefreshCw className="text-forest flex-shrink-0" size={24} />
                 <div>
-                  <h4 className="font-semibold text-gray-800">Mudah Dikembalikan</h4>
+                  <h4 className="font-bold text-gray-900">Mudah Dikembalikan</h4>
                   <p className="text-sm text-gray-500">Pengembalian dalam 24 jam</p>
                 </div>
               </div>
@@ -273,20 +279,20 @@ export default function ProductDetail() {
                 <Link 
                   key={recProduct.id} 
                   to={`/product/${recProduct.id}`}
-                  className="bg-white rounded-xl shadow-sm hover:shadow-lg transition p-4"
+                  className="bg-white rounded-2xl shadow-xs hover:shadow-lg transition p-4 border border-mist-border"
                 >
-                  <div className="h-32 bg-gray-50 rounded-lg mb-3 flex items-center justify-center">
+                  <div className="h-32 bg-mist-surface/40 rounded-xl mb-3 flex items-center justify-center">
                     <img 
                       src={recProduct.image} 
                       alt={recProduct.name}
                       className="h-full object-contain"
                     />
                   </div>
-                  <h4 className="font-semibold text-gray-800 text-sm truncate">
+                  <h4 className="font-semibold text-gray-800 text-sm truncate hover:text-forest transition">
                     {recProduct.name}
                   </h4>
                   <p className="text-xs text-gray-500 mb-2">{recProduct.weight}</p>
-                  <p className="text-green-600 font-bold text-sm">
+                  <p className="text-forest font-bold text-sm">
                     Rp {formatRupiah(recProduct.price)}
                   </p>
                 </Link>

@@ -1,11 +1,20 @@
 @import "tailwindcss";
 
+@theme {
+  --color-forest: #006E59;
+  --color-forest-dark: #005444;
+  --color-forest-light: #008c72;
+  --color-forest-soft: #E6F3F0;
 
+  --color-honey: #F7BD53;
+  --color-honey-dark: #D99F36;
+  --color-honey-light: #FDEBC7;
+  --color-honey-soft: #FEF8EB;
 
-
-
-
-
+  --color-mist: #D4DBDE;
+  --color-mist-surface: #F4F7F8;
+  --color-mist-border: #E2E8EA;
+}
 
 /* :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;

@@ -1,7 +1,52 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 export default function Contact() {
   const [form, setForm] = React.useState({ name: '', email: '', address: '', message: '' });
+  const sectionRef = useRef<HTMLElement>(null);
+  const infoRef = useRef<HTMLDivElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const ctx = gsap.context(() => {
+      if (infoRef.current) {
+        gsap.fromTo(infoRef.current,
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: "top 80%",
+            }
+          }
+        );
+      }
+      if (formRef.current) {
+        gsap.fromTo(formRef.current,
+          { opacity: 0, y: 40 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.7,
+            delay: 0.15,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: "top 80%",
+            }
+          }
+        );
+      }
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -11,31 +56,33 @@ export default function Contact() {
     bodyText += message;
     const body = encodeURIComponent(bodyText);
     // send to support and CC the customer email so they get a copy
-    window.location.href = `mailto:support@nusantara-mart.id?cc=${encodeURIComponent(email)}&subject=${subject}&body=${body}`;
+    window.location.href = `mailto:support@minimo-mart.id?cc=${encodeURIComponent(email)}&subject=${subject}&body=${body}`;
   }
 
   return (
-    <section className="w-full bg-white py-16 px-6">
+    <section ref={sectionRef} className="w-full bg-white py-16 px-6">
       <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-3xl font-bold text-gray-800 mb-4">Pengiriman</h2>
-        <p className="text-gray-600 mb-8">
-          Kami siap membantu Anda! Silakan hubungi kami untuk pertanyaan atau informasi
-          pengiriman.
-        </p>
-        <div className="grid grid-cols-1  gap-8">
-          <div className='flex flex-col items-center text-center'>
-            <h3 className="text-xl font-semibold text-gray-700 mb-2">Info Pengiriman</h3>
-            <p className="text-gray-600">Kami melayani pengiriman di seluruh Indonesia.</p>
-            <ul className="text-gray-600 list-disc list-inside mt-2">
-              <li>Waktu pengiriman: 3-5 hari kerja</li>
-              <li>Biaya tergantung jarak dan berat</li>
-              <li>Tracking tersedia melalui email/telepon</li>
-            </ul>
+        <div ref={infoRef}>
+          <h2 className="text-3xl font-bold text-gray-800 mb-4">Pengiriman</h2>
+          <p className="text-gray-600 mb-8">
+            Kami siap membantu Anda! Silakan hubungi kami untuk pertanyaan atau informasi
+            pengiriman.
+          </p>
+          <div className="grid grid-cols-1 gap-8">
+            <div className='flex flex-col items-center text-center'>
+              <h3 className="text-xl font-semibold text-gray-700 mb-2">Info Pengiriman</h3>
+              <p className="text-gray-600">Kami melayani pengiriman di seluruh Indonesia.</p>
+              <ul className="text-gray-600 list-disc list-inside mt-2">
+                <li>Waktu pengiriman: 3-5 hari kerja</li>
+                <li>Biaya tergantung jarak dan berat</li>
+                <li>Tracking tersedia melalui email/telepon</li>
+              </ul>
+            </div>
           </div>
         </div>
 
         {/* contact form with delivery address */}
-        <form onSubmit={handleSubmit} className="mt-12 max-w-lg mx-auto text-left">
+        <form ref={formRef} onSubmit={handleSubmit} className="mt-12 max-w-lg mx-auto text-left">
           <h3 className="text-2xl font-semibold text-gray-800 mb-4">Pengiriman & Kontak</h3>
           <div className="flex flex-col gap-4">
             <input
@@ -44,7 +91,7 @@ export default function Contact() {
               placeholder="Nama"
               value={form.name}
               onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
-              className="border p-3 rounded"
+              className="border border-gray-300 p-3 rounded-xl focus:outline-none focus:border-forest focus:ring-1 focus:ring-forest"
             />
             <input
               required
@@ -52,7 +99,7 @@ export default function Contact() {
               placeholder="Email Anda"
               value={form.email}
               onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
-              className="border p-3 rounded"
+              className="border border-gray-300 p-3 rounded-xl focus:outline-none focus:border-forest focus:ring-1 focus:ring-forest"
             />
             <input
               required
@@ -60,17 +107,17 @@ export default function Contact() {
               placeholder="Alamat Pengiriman"
               value={form.address}
               onChange={(e) => setForm((f) => ({ ...f, address: e.target.value }))}
-              className="border p-3 rounded"
+              className="border border-gray-300 p-3 rounded-xl focus:outline-none focus:border-forest focus:ring-1 focus:ring-forest"
             />
             <textarea
               placeholder="Pesan / Instruksi Tambahan"
               value={form.message}
               onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
-              className="border p-3 rounded h-32"
+              className="border border-gray-300 p-3 rounded-xl h-32 focus:outline-none focus:border-forest focus:ring-1 focus:ring-forest"
             />
             <button
               type="submit"
-              className="bg-green-600 text-white px-6 py-3 rounded-full hover:bg-green-700 transition"
+              className="bg-forest text-white px-6 py-3 rounded-full hover:bg-forest-dark transition font-semibold shadow-sm"
             >
               Kirim Permintaan
             </button>

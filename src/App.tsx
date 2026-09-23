@@ -5,13 +5,14 @@ import Category from './components/Category'
 import Product from './components/Product'
 import Promo from './components/Promo'
 import FlashSale from './components/FlashSale'
-import Contact from './components/Contact'
+import AppDownload from './components/AppDownload'
 import ProductDetail from './components/ProductDetail'
 import Checkout from './components/Checkout'
 import OrderHistory from './components/OrderHistory'
 import AllProduct from './components/AllProduct'
 import CategoryProducts from './components/CategoryProducts'
 import { useEffect, useRef, useState } from 'react'
+import { Leaf, Zap } from 'lucide-react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import './App.css'
@@ -22,6 +23,8 @@ function HomePage() {
   const textRef = useRef<HTMLDivElement>(null);
   const bgTextRef = useRef<HTMLDivElement>(null);
   const sliderRef = useRef<HTMLDivElement>(null);
+  const badge1Ref = useRef<HTMLDivElement>(null);
+  const badge2Ref = useRef<HTMLDivElement>(null);
   
   const [currentSlide, setCurrentSlide] = useState(0);
   const slides = [
@@ -70,6 +73,37 @@ function HomePage() {
       });
     }
 
+    // Floating badges loop
+    if (badge1Ref.current) {
+      gsap.fromTo(badge1Ref.current, 
+        { scale: 0, opacity: 0 }, 
+        { scale: 1, opacity: 1, duration: 0.6, delay: 0.8, ease: "back.out(1.7)" }
+      );
+      gsap.to(badge1Ref.current, {
+        y: -10,
+        duration: 2.2,
+        repeat: -1,
+        yoyo: true,
+        ease: "power1.inOut",
+        delay: 1.4
+      });
+    }
+
+    if (badge2Ref.current) {
+      gsap.fromTo(badge2Ref.current, 
+        { scale: 0, opacity: 0 }, 
+        { scale: 1, opacity: 1, duration: 0.6, delay: 1, ease: "back.out(1.7)" }
+      );
+      gsap.to(badge2Ref.current, {
+        y: 10,
+        duration: 2.5,
+        repeat: -1,
+        yoyo: true,
+        ease: "power1.inOut",
+        delay: 1.6
+      });
+    }
+
     // 4. Banner Slider Sweep timer
     const interval = setInterval(() => {
       // Swipe out current
@@ -108,15 +142,15 @@ function HomePage() {
           <div ref={textRef} className="space-y-6 text-center md:text-left order-2 md:order-1">
             <h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold text-black leading-tight">
               Selamat Datang di <br />
-              <span className="text-green-500">Nusantara Mart</span>
+              <span className="text-forest">Minimo<span className="text-honey">Mart</span></span>
             </h1>
             <p className="text-gray-700 text-sm md:text-base leading-relaxed max-w-xl mx-auto md:mx-0">
-              <span className="italic font-medium">Nusantara Mart</span> adalah pusat belanja ritel modern kebanggaan lokal yang menghadirkan pengalaman berbelanja harian terbaik. Kami menyediakan aneka ragam kebutuhan pokok, mulai dari sayuran segar berkualitas, produk olahan daging pilihan, hingga kebutuhan rumah tangga sehari-hari dengan harga terjangkau dan pelayanan yang ramah.
+              <span className="italic font-medium">Minimo Mart</span> adalah pusat belanja ritel modern kebanggaan lokal yang menghadirkan pengalaman berbelanja harian terbaik. Kami menyediakan aneka ragam kebutuhan pokok, mulai dari sayuran segar berkualitas, produk olahan daging pilihan, hingga kebutuhan rumah tangga sehari-hari dengan harga terjangkau dan pelayanan yang ramah.
             </p>
             <div className="pt-4">
               <a 
                 href="#product" 
-                className="inline-block w-full md:w-auto bg-black text-white px-10 py-4 rounded-full font-bold hover:bg-gray-800 transition-all shadow-lg hover:shadow-xl active:scale-95"
+                className="inline-block w-full md:w-auto bg-forest text-white px-10 py-4 rounded-full font-bold hover:bg-forest-dark transition-all shadow-lg hover:shadow-forest/25 active:scale-95"
               >
                 Lihat Produk
               </a>
@@ -125,12 +159,35 @@ function HomePage() {
           
           <div className="flex justify-center md:justify-end order-1 md:order-2 h-full">
             <div className="relative group w-full max-w-[280px] sm:max-w-sm md:max-w-md lg:max-w-lg aspect-square">
-              <div className="absolute -inset-4 bg-green-100 rounded-full blur-3xl opacity-50 group-hover:opacity-80 transition-opacity"></div>
+              <div className="absolute -inset-4 bg-forest-soft rounded-full blur-3xl opacity-50 group-hover:opacity-80 transition-opacity"></div>
+              
+              {/* Floating Chip 1 */}
+              <div ref={badge1Ref} className="absolute -top-3 -left-3 md:-left-6 bg-white/95 backdrop-blur-md px-3.5 py-2 rounded-2xl shadow-xl border border-mist-border z-20 flex items-center gap-2.5">
+                <div className="w-7 h-7 rounded-xl bg-forest-soft flex items-center justify-center text-forest shrink-0">
+                  <Leaf size={16} />
+                </div>
+                <div>
+                  <p className="text-[11px] font-extrabold text-gray-900 leading-tight">100% Produk Lokal</p>
+                  <p className="text-[9px] text-forest font-semibold">Segar Setiap Hari</p>
+                </div>
+              </div>
+
+              {/* Floating Chip 2 */}
+              <div ref={badge2Ref} className="absolute -bottom-3 -right-3 md:-right-6 bg-white/95 backdrop-blur-md px-3.5 py-2 rounded-2xl shadow-xl border border-mist-border z-20 flex items-center gap-2.5">
+                <div className="w-7 h-7 rounded-xl bg-honey-soft flex items-center justify-center text-honey-dark shrink-0">
+                  <Zap size={16} className="fill-honey" />
+                </div>
+                <div>
+                  <p className="text-[11px] font-extrabold text-gray-900 leading-tight">Pengiriman Cepat</p>
+                  <p className="text-[9px] text-honey-dark font-semibold">Ke Seluruh Indonesia</p>
+                </div>
+              </div>
+
               <div ref={sliderRef} className="w-full h-full relative" style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)" }}>
                 <img 
                   src={slides[currentSlide]} 
                   className="w-full h-full object-cover rounded-3xl drop-shadow-2xl"
-                  alt="Nusantara Mart Hero"
+                  alt="Minimo Hero"
                 />
               </div>
             </div>
@@ -154,18 +211,20 @@ function HomePage() {
         <Promo />
       </div>
 
-      <div id="contact">
-        <Contact />
+      <div id="app-download">
+        <AppDownload />
       </div>
     </>
   );
 }
 
 import ScrollToTop from './components/ScrollToTop'
+import ToastContainer from './components/ToastContainer'
 
 function App() {
   return (
     <div className="App">
+      <ToastContainer />
       <ScrollToTop />
       <Navbar />
       <Routes>

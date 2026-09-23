@@ -36,7 +36,7 @@ function ProductCard({ product }: { product: Product }) {
       {/* Nama Produk */}
       <h3 
         onClick={() => navigate(`/product/${product.id}`)}
-        className="text-base md:text-lg font-semibold text-gray-800 truncate cursor-pointer hover:text-green-600 transition"
+        className="text-base md:text-lg font-semibold text-gray-800 truncate cursor-pointer hover:text-forest transition"
       >
         {product.name}
       </h3>
@@ -45,30 +45,30 @@ function ProductCard({ product }: { product: Product }) {
       <p className="text-xs md:text-sm text-gray-500 mb-2">{product.weight}</p>
       
       {/* Harga */}
-      <p className="text-xl md:text-2xl font-bold text-green-600 mb-4">
+      <p className="text-xl md:text-2xl font-bold text-forest mb-4">
         Rp {formatRupiah(product.price)}
       </p>
 
       {/* Kategori Badge */}
-      <span className="inline-block bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full mb-3 w-fit">
+      <span className="inline-block bg-mist-surface text-gray-700 text-xs px-2.5 py-1 rounded-full mb-3 w-fit border border-mist-border font-medium">
         {product.category}
       </span>
 
       {/* Action Buttons */}
       <div className="mt-auto flex items-center justify-between gap-2">
-        <div className="flex items-center border border-gray-200 rounded-full px-2 py-1">
+        <div className="flex items-center border border-mist-border rounded-full px-2 py-1 bg-white">
           <button
             onClick={decrease}
-            className="w-6 h-6 md:w-8 md:h-8 flex items-center justify-center text-gray-500 hover:text-green-600"
+            className="w-6 h-6 md:w-8 md:h-8 flex items-center justify-center text-gray-500 hover:text-forest cursor-pointer"
           >
             -
           </button>
-          <span className="w-6 md:w-8 text-center font-medium text-sm md:text-base">
+          <span className="w-6 md:w-8 text-center font-medium text-sm md:text-base text-gray-800">
             {qty}
           </span>
           <button
             onClick={increase}
-            className="w-6 h-6 md:w-8 md:h-8 flex items-center justify-center text-gray-500 hover:text-green-600"
+            className="w-6 h-6 md:w-8 md:h-8 flex items-center justify-center text-gray-500 hover:text-forest cursor-pointer"
           >
             +
           </button>
@@ -79,7 +79,7 @@ function ProductCard({ product }: { product: Product }) {
             addToCart(product, qty);
             setQty(1);
           }}
-          className="bg-green-500 hover:bg-green-600 text-white p-2.5 md:p-3 rounded-full transition shadow-md hover:scale-105"
+          className="bg-forest hover:bg-forest-dark text-white p-2.5 md:p-3 rounded-full transition shadow-md hover:shadow-forest/25 hover:scale-105 cursor-pointer active:scale-95"
         >
           <ShoppingCart size={16} className="md:w-[18px]" />
         </button>
@@ -89,12 +89,13 @@ function ProductCard({ product }: { product: Product }) {
 }
 
 export default function CategoryProducts() {
-  const { categoryName } = useParams<{ categoryName: string }>();
+  const params = useParams<{ category?: string; categoryName?: string }>();
   const navigate = useNavigate();
   const [sortBy, setSortBy] = useState<"default" | "price-low" | "price-high" | "name">("default");
   
-  // Decode category name dari URL
-  const decodedCategory = categoryName ? decodeURIComponent(categoryName) : "";
+  // Decode category name dari URL parameter (bisa :category atau :categoryName)
+  const rawCategory = params.category || params.categoryName || "";
+  const decodedCategory = rawCategory ? decodeURIComponent(rawCategory) : "";
   
   // Filter produk berdasarkan kategori
   const categoryProducts = productsData.filter(
@@ -121,13 +122,13 @@ export default function CategoryProducts() {
   // Jika kategori tidak ditemukan
   if (!decodedCategory || categoryProducts.length === 0) {
     return (
-      <div className="min-h-screen bg-gray-50 py-10">
+      <div className="min-h-screen bg-mist-surface/50 py-10">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <h2 className="text-2xl font-bold text-gray-800 mb-4">Kategori Tidak Ditemukan</h2>
           <p className="text-gray-600 mb-6">Maaf, kategori yang Anda cari tidak tersedia</p>
           <button
             onClick={() => navigate("/")}
-            className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full font-medium transition"
+            className="bg-forest hover:bg-forest-dark text-white px-6 py-3 rounded-full font-semibold transition shadow-md"
           >
             Kembali ke Beranda
           </button>
@@ -137,40 +138,40 @@ export default function CategoryProducts() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-6 md:py-10">
+    <div className="min-h-screen bg-mist-surface/40 py-6 md:py-10 border-b border-mist-border">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
         
         {/* Header dengan Tombol Kembali */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
           <button
             onClick={() => navigate(-1)}
-            className="flex items-center gap-2 text-gray-600 hover:text-green-600 transition w-fit"
+            className="flex items-center gap-2 text-gray-600 hover:text-forest transition w-fit cursor-pointer"
           >
             <ArrowLeft size={20} />
-            <span className="text-sm md:text-base">Kembali</span>
+            <span className="text-sm md:text-base font-medium">Kembali</span>
           </button>
           
-          <h1 className="text-2xl md:text-3xl font-bold text-gray-800">
-            Kategori: {decodedCategory}
+          <h1 className="text-2xl md:text-3xl font-extrabold text-gray-900 tracking-tight">
+            Kategori: <span className="text-forest">{decodedCategory}</span>
           </h1>
           
           {/* Info jumlah produk */}
-          <div className="text-sm text-gray-500 bg-white px-3 py-1 rounded-full shadow-sm w-fit">
+          <div className="text-sm text-gray-700 bg-white px-3.5 py-1.5 rounded-full shadow-xs border border-mist-border w-fit font-medium">
             {categoryProducts.length} produk ditemukan
           </div>
         </div>
 
         {/* Navigasi Kategori Lainnya (Horizontal Scroll) */}
-        <div className="mb-8 overflow-x-auto pb-2">
+        <div className="mb-8 overflow-x-auto pb-2 scrollbar-hide">
           <div className="flex gap-2 min-w-max">
             {allCategories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => navigate(`/category/${encodeURIComponent(cat)}`)}
-                className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition ${
+                className={`px-4 py-2 rounded-full text-sm font-semibold whitespace-nowrap transition cursor-pointer ${
                   cat === decodedCategory
-                    ? "bg-green-500 text-white"
-                    : "bg-white text-gray-600 hover:bg-gray-100 border border-gray-200"
+                    ? "bg-forest text-white shadow-md shadow-forest/20 scale-105"
+                    : "bg-white text-gray-700 hover:bg-forest-soft hover:text-forest border border-mist-border"
                 }`}
               >
                 {cat}
@@ -181,13 +182,13 @@ export default function CategoryProducts() {
 
         {/* Sort Section */}
         <div className="mb-6 flex justify-end">
-          <div className="flex items-center gap-2 bg-white p-2 rounded-lg shadow-sm">
-            <Filter size={18} className="text-gray-500" />
-            <span className="text-sm text-gray-600">Urutkan:</span>
+          <div className="flex items-center gap-2 bg-white px-3 py-2 rounded-xl shadow-xs border border-mist-border">
+            <Filter size={18} className="text-forest" />
+            <span className="text-sm text-gray-700 font-medium">Urutkan:</span>
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as typeof sortBy)}
-              className="px-2 py-1 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-green-500"
+              className="px-2.5 py-1 border border-mist-border rounded-lg text-sm focus:outline-none focus:border-forest text-gray-800 font-medium bg-mist-surface/30 cursor-pointer"
             >
               <option value="default">Default</option>
               <option value="price-low">Harga Terendah</option>

@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ShoppingCart } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/useCart";
@@ -19,7 +19,7 @@ function ProductCard({ product }: { product: Product }) {
     return price.toLocaleString('id-ID');
   };
 
-  const handleAddToCart = (e: React.MouseEvent) => {
+  const handleAddToCart = () => {
     addToCart(product, qty);
     setQty(1);
 
@@ -80,30 +80,30 @@ function ProductCard({ product }: { product: Product }) {
       {/* Nama Produk */}
       <h3 
         onClick={() => navigate(`/product/${product.id}`)}
-        className="text-base md:text-lg font-semibold text-gray-800 truncate cursor-pointer hover:text-green-600 transition"
+        className="text-base md:text-lg font-semibold text-gray-800 truncate cursor-pointer hover:text-forest transition"
       >
         {product.name}
       </h3>
       <p className="text-xs md:text-sm text-gray-500 mb-2">{product.weight}</p>
-      <p className="text-xl md:text-2xl font-bold text-green-600 mb-4">
+      <p className="text-xl md:text-2xl font-bold text-forest mb-4">
         Rp {formatRupiah(product.price)}
       </p>
 
       {/* Action Buttons */}
       <div className="mt-auto flex items-center justify-between gap-2">
-        <div className="flex items-center border border-gray-200 rounded-full px-2 py-1">
+        <div className="flex items-center border border-gray-200 rounded-full px-2 py-1 bg-white">
           <button
             onClick={decrease}
-            className="w-6 h-6 md:w-8 md:h-8 flex items-center justify-center text-gray-500 hover:text-green-600"
+            className="w-6 h-6 md:w-8 md:h-8 flex items-center justify-center text-gray-500 hover:text-forest cursor-pointer"
           >
             -
           </button>
-          <span className="w-6 md:w-8 text-center font-medium text-sm md:text-base">
+          <span className="w-6 md:w-8 text-center font-medium text-sm md:text-base text-gray-800">
             {qty}
           </span>
           <button
             onClick={increase}
-            className="w-6 h-6 md:w-8 md:h-8 flex items-center justify-center text-gray-500 hover:text-green-600"
+            className="w-6 h-6 md:w-8 md:h-8 flex items-center justify-center text-gray-500 hover:text-forest cursor-pointer"
           >
             +
           </button>
@@ -111,7 +111,7 @@ function ProductCard({ product }: { product: Product }) {
 
         <button
           onClick={handleAddToCart}
-          className="bg-green-500 hover:bg-green-600 text-white p-2.5 md:p-3 rounded-full transition shadow-md hover:scale-105"
+          className="bg-forest hover:bg-forest-dark text-white p-2.5 md:p-3 rounded-full transition shadow-md hover:shadow-forest/30 hover:scale-105 cursor-pointer active:scale-95"
         >
           <ShoppingCart size={16} className="md:w-[18px]" />
         </button>
@@ -123,37 +123,70 @@ function ProductCard({ product }: { product: Product }) {
 // Main component
 export default function Product() {
   const navigate = useNavigate();
+  const [selectedCategory, setSelectedCategory] = useState<string>("Semua");
+  const sectionRef = useRef<HTMLElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
   
-  // Hanya tampilkan 8 produk pertama di halaman utama
-  const featuredProducts = productsData.slice(0, 8);
+  const categoryTabs = ["Semua", "Frozen Food", "Sayuran", "Makanan Cepat Saji", "Minuman Instan", "Snacks", "Daging"];
+
+  const filteredProducts = selectedCategory === "Semua"
+    ? productsData.slice(0, 8)
+    : productsData.filter(p => p.category.toLowerCase() === selectedCategory.toLowerCase());
+
+  // Animate grid cards whenever selectedCategory changes
+  useEffect(() => {
+    if (gridRef.current) {
+      gsap.fromTo(gridRef.current.children,
+        { opacity: 0, y: 25, scale: 0.96 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.4, stagger: 0.04, ease: "power2.out" }
+      );
+    }
+  }, [selectedCategory]);
 
   return (
-    <section id="product" className="w-full bg-gray-50 py-10 md:py-16 px-4 md:px-6">
+    <section ref={sectionRef} id="product" className="w-full bg-mist-surface/60 py-10 md:py-16 px-4 md:px-6 border-b border-mist-border">
       <div className="max-w-7xl mx-auto">
 
         {/* Header Section */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 md:mb-12 gap-4">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 md:mb-8 gap-4">
           <div>
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-800">
-              Produk Populer
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 tracking-tight">
+              Produk Pilihan
             </h2>
             <p className="text-gray-500 text-xs md:text-sm mt-1">
-              Temukan produk lokal terbaik pilihan pelanggan kami
+              Pilihan produk segar, lezat, dan berkualitas untuk Anda
             </p>
           </div>
 
           {/* Tombol Selengkapnya - navigasi ke halaman semua produk */}
           <button 
             onClick={() => navigate('/products')}
-            className="w-full md:w-auto bg-green-500 hover:bg-green-600 text-white px-6 py-2.5 rounded-full font-medium transition shadow-md hover:scale-105"
+            className="w-full md:w-auto bg-forest hover:bg-forest-dark text-white px-6 py-2.5 rounded-full font-semibold transition shadow-md hover:shadow-forest/20 hover:scale-105 cursor-pointer"
           >
-            Selengkapnya
+            Lihat Semua Produk ({productsData.length})
           </button>
         </div>
 
-        {/* Grid System - 8 produk */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
-          {featuredProducts.map((product) => (
+        {/* Filter Kategori Tabs */}
+        <div className="flex items-center gap-2.5 overflow-x-auto pb-3 mb-6 scrollbar-hide">
+          {categoryTabs.map((tab) => (
+            <button
+              key={tab}
+              onClick={() => setSelectedCategory(tab)}
+              className={`px-4 py-2 rounded-full text-xs md:text-sm font-semibold whitespace-nowrap transition-all duration-200 cursor-pointer ${
+                selectedCategory === tab
+                  ? "bg-forest text-white shadow-md shadow-forest/25 scale-105"
+                  : "bg-white text-gray-700 hover:bg-forest-soft hover:text-forest border border-mist-border"
+              }`}
+            >
+              {tab}
+            </button>
+          ))}
+        </div>
+
+        {/* Grid System */}
+        <div ref={gridRef} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
+          {filteredProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>

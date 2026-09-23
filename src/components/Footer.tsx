@@ -29,7 +29,7 @@ function Footer() {
     }, []);
 
     return (
-        <footer ref={footerRef} className="bg-gray-800 text-white py-12 px-6 md:px-12 overflow-hidden">
+        <footer ref={footerRef} className="bg-[#052620] text-white py-14 px-6 md:px-12 overflow-hidden border-t border-[#006e59]/30">
             <div ref={contentRef}>
                 {/* Grid Configuration: 
                 - grid-cols-1 (HP)
@@ -40,59 +40,59 @@ function Footer() {
                 
                 {/* Section 1: About */}
                 <div>
-                    <h3 className="text-lg font-bold mb-5 opacity-70 border-b border-gray-700 pb-2 w-fit">
-                        About NusantaraMart
+                    <h3 className="text-lg font-bold mb-5 opacity-90 border-b border-forest/60 pb-2 w-fit text-mist">
+                        About Minimo Mart
                     </h3>
-                    <ul className="space-y-3 text-sm text-gray-300">
+                    <ul className="space-y-3 text-sm text-mist/80">
                         <li>Marketplace Produk Lokal</li>
-                        <li>UMKM Terbaik di Kota Sidoarjo</li>
-                        <li>Sidoarjo - Indonesia</li>
+                        <li>UMKM Unggulan Indonesia</li>
+                        <li>Layanan Seluruh Indonesia</li>
                     </ul>
                 </div>
 
                 {/* Section 2: Account */}
                 <div>
-                    <h3 className="text-lg font-bold mb-5 opacity-70 border-b border-gray-700 pb-2 w-fit">
+                    <h3 className="text-lg font-bold mb-5 opacity-90 border-b border-forest/60 pb-2 w-fit text-mist">
                         Account
                     </h3>
-                    <ul className="space-y-3 text-sm">
-                        <li><a href="#" className="hover:text-green-400 transition-colors">Benefit</a></li>
-                        <li><a href="#" className="hover:text-green-400 transition-colors">Daftar Member</a></li>
-                        <li><a href="#" className="hover:text-green-400 transition-colors">Kriteria Umum</a></li>
-                        <li><a href="#" className="hover:text-green-400 transition-colors">Nikmati bonus afiliasi</a></li>
+                    <ul className="space-y-3 text-sm text-mist/80">
+                        <li><a href="#" className="hover:text-honey transition-colors">Benefit</a></li>
+                        <li><a href="#" className="hover:text-honey transition-colors">Daftar Member</a></li>
+                        <li><a href="#" className="hover:text-honey transition-colors">Kriteria Umum</a></li>
+                        <li><a href="#" className="hover:text-honey transition-colors">Nikmati bonus afiliasi</a></li>
                     </ul>
                 </div>
 
                 {/* Section 3: Links */}
                 <div>
-                    <h3 className="text-lg font-bold mb-5 opacity-70 border-b border-gray-700 pb-2 w-fit">
+                    <h3 className="text-lg font-bold mb-5 opacity-90 border-b border-forest/60 pb-2 w-fit text-mist">
                         Links
                     </h3>
-                    <ul className="space-y-3 text-sm">
-                        <li><a href="#" className="hover:text-green-400 transition-colors">Nusantara Mart Sidoarjo</a></li>
-                        <li><a href="#" className="hover:text-green-400 transition-colors">Lapak Diskon</a></li>
-                        <li><a href="#" className="hover:text-green-400 transition-colors">NDP</a></li>
-                        <li><a href="#" className="hover:text-green-400 transition-colors">MC</a></li>
+                    <ul className="space-y-3 text-sm text-mist/80">
+                        <li><a href="#" className="hover:text-honey transition-colors">Minimo Mart Indonesia</a></li>
+                        <li><a href="#" className="hover:text-honey transition-colors">Lapak Diskon</a></li>
+                        <li><a href="#" className="hover:text-honey transition-colors">NDP</a></li>
+                        <li><a href="#" className="hover:text-honey transition-colors">MC</a></li>
                     </ul>
                 </div>
 
                 {/* Section 4: Contact Address */}
-                <div>
-                    <h3 className="text-lg font-bold mb-5 opacity-70 border-b border-gray-700 pb-2 w-fit">
+                <div id="footer-contact">
+                    <h3 className="text-lg font-bold mb-5 opacity-90 border-b border-forest/60 pb-2 w-fit text-mist">
                         Contact Address
                     </h3>
-                    <div className="text-sm space-y-4 text-gray-300">
+                    <div className="text-sm space-y-4 text-mist/80">
                         <p>
-                            <span className="font-bold block text-white">Nusantara Mart</span>
-                            Jalan Raya Suko Sidoarjo <br /> ID : 123456
+                            <span className="font-bold block text-white text-base">Minimo<span className="text-honey">Mart</span></span>
+                            Indonesia <br /> ID : 123456
                         </p>
                         <p className="flex flex-col">
-                            <span className="opacity-60">Email:</span>
-                            <a href="mailto:NusaMart@gmail.com" className="hover:text-green-400">NusaMart@gmail.com</a>
+                            <span className="opacity-60 text-xs">Email:</span>
+                            <a href="mailto:MinimoMart@gmail.com" className="hover:text-honey transition-colors">MinimoMart@gmail.com</a>
                         </p>
                         <p className="flex flex-col">
-                            <span className="opacity-60">Phone:</span>
-                            <a href="tel:0811000000" className="hover:text-green-400">0811-XXXX-XXXX</a>
+                            <span className="opacity-60 text-xs">Phone:</span>
+                            <a href="tel:0811000000" className="hover:text-honey transition-colors">0811-XXXX-XXXX</a>
                         </p>
                     </div>
                 </div>
@@ -100,8 +100,8 @@ function Footer() {
             </div>
 
             {/* Bottom Copyright Area */}
-            <div className="max-w-7xl mx-auto mt-12 pt-8 border-t border-gray-700 text-center text-xs text-gray-500">
-                <p>&copy; {new Date().getFullYear()} Nusantara Mart Sidoarjo. All rights reserved.</p>
+            <div className="max-w-7xl mx-auto mt-12 pt-8 border-t border-white/10 text-center text-xs text-mist/60">
+                <p>&copy; {new Date().getFullYear()} Minimo Mart Indonesia. All rights reserved.</p>
             </div>
             </div>
         </footer>
