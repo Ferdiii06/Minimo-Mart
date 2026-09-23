@@ -105,15 +105,15 @@ export default function Category() {
         </div>
 
         {/* Grid Ikon Kategori (6 Kategori) */}
-        <div ref={gridRef} className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-y-6 gap-x-4 md:gap-6 justify-items-center max-w-5xl mx-auto">
+        <div ref={gridRef} className="grid grid-cols-3 md:grid-cols-6 gap-y-6 gap-x-2 sm:gap-x-4 md:gap-6 justify-items-center max-w-5xl mx-auto">
           {categories.map((category, index) => (
             <div
               key={index}
               onClick={() => handleCategoryClick(category.title)}
-              className="flex flex-col items-center gap-3 cursor-pointer group w-full max-w-[120px]"
+              className="flex flex-col items-center gap-2 sm:gap-3 cursor-pointer group w-full max-w-[100px] sm:max-w-[120px]"
             >
               {/* Ikon Bulat */}
-              <div className={`w-16 h-16 md:w-20 md:h-20 rounded-2xl md:rounded-full ${category.bg} flex items-center justify-center shadow-xs group-hover:shadow-md transition-all duration-300 transform group-hover:-translate-y-1 overflow-hidden border-2 border-transparent group-hover:border-forest`}>
+              <div className={`w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-2xl md:rounded-full ${category.bg} flex items-center justify-center shadow-xs group-hover:shadow-md transition-all duration-300 transform group-hover:-translate-y-1 overflow-hidden border-2 border-transparent group-hover:border-forest`}>
                 <img
                   src={category.image.startsWith('/') ? category.image : `${category.image}?auto=format&fit=crop&w=200&q=80`}
                   alt={category.title}
@@ -122,7 +122,7 @@ export default function Category() {
               </div>
               
               {/* Teks Kategori */}
-              <span className="text-xs md:text-sm font-semibold text-gray-700 text-center leading-tight group-hover:text-forest transition-colors line-clamp-2">
+              <span className="text-[11px] sm:text-xs md:text-sm font-semibold text-gray-700 text-center leading-tight group-hover:text-forest transition-colors line-clamp-2">
                 {category.title}
               </span>
             </div>

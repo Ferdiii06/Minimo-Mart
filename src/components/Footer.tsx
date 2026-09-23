@@ -29,7 +29,7 @@ function Footer() {
     }, []);
 
     return (
-        <footer ref={footerRef} className="bg-[#052620] text-white py-14 px-6 md:px-12 overflow-hidden border-t border-[#006e59]/30">
+        <footer ref={footerRef} className="bg-[#052620] text-white py-10 sm:py-14 px-4 sm:px-6 md:px-12 pb-safe overflow-hidden border-t border-[#006e59]/30">
             <div ref={contentRef}>
                 {/* Grid Configuration: 
                 - grid-cols-1 (HP)

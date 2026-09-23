@@ -129,7 +129,7 @@ function HomePage() {
   return (
     <>
       {/* Hero Section */}
-      <section id="home" ref={heroRef} className="relative py-10 md:py-20 px-6 bg-white overflow-hidden min-h-[80vh] flex items-center">
+      <section id="home" ref={heroRef} className="relative py-8 sm:py-12 md:py-20 px-4 sm:px-6 bg-white overflow-hidden min-h-[75vh] md:min-h-[80vh] flex items-center">
         {/* Background Parallax Text */}
         <div 
           ref={bgTextRef} 
@@ -138,19 +138,19 @@ function HomePage() {
           FRESH GROCERY EVERYDAY
         </div>
 
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center relative z-10 w-full">
-          <div ref={textRef} className="space-y-6 text-center md:text-left order-2 md:order-1">
-            <h1 className="text-3xl sm:text-4xl md:text-6xl font-extrabold text-black leading-tight">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-center relative z-10 w-full">
+          <div ref={textRef} className="space-y-4 sm:space-y-6 text-center md:text-left order-2 md:order-1">
+            <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-black leading-tight tracking-tight">
               Selamat Datang di <br />
               <span className="text-forest">Minimo<span className="text-honey">Mart</span></span>
             </h1>
-            <p className="text-gray-700 text-sm md:text-base leading-relaxed max-w-xl mx-auto md:mx-0">
+            <p className="text-gray-700 text-xs sm:text-sm md:text-base leading-relaxed max-w-xl mx-auto md:mx-0">
               <span className="italic font-medium">Minimo Mart</span> adalah pusat belanja ritel modern kebanggaan lokal yang menghadirkan pengalaman berbelanja harian terbaik. Kami menyediakan aneka ragam kebutuhan pokok, mulai dari sayuran segar berkualitas, produk olahan daging pilihan, hingga kebutuhan rumah tangga sehari-hari dengan harga terjangkau dan pelayanan yang ramah.
             </p>
-            <div className="pt-4">
+            <div className="pt-2 sm:pt-4">
               <a 
                 href="#product" 
-                className="inline-block w-full md:w-auto bg-forest text-white px-10 py-4 rounded-full font-bold hover:bg-forest-dark transition-all shadow-lg hover:shadow-forest/25 active:scale-95"
+                className="inline-block w-full sm:w-auto text-center bg-forest text-white px-8 sm:px-10 py-3.5 sm:py-4 rounded-full font-bold hover:bg-forest-dark transition-all shadow-lg hover:shadow-forest/25 active:scale-95"
               >
                 Lihat Produk
               </a>
@@ -158,28 +158,28 @@ function HomePage() {
           </div>
           
           <div className="flex justify-center md:justify-end order-1 md:order-2 h-full">
-            <div className="relative group w-full max-w-[280px] sm:max-w-sm md:max-w-md lg:max-w-lg aspect-square">
+            <div className="relative group w-full max-w-[260px] sm:max-w-sm md:max-w-md lg:max-w-lg aspect-square">
               <div className="absolute -inset-4 bg-forest-soft rounded-full blur-3xl opacity-50 group-hover:opacity-80 transition-opacity"></div>
               
               {/* Floating Chip 1 */}
-              <div ref={badge1Ref} className="absolute -top-3 -left-3 md:-left-6 bg-white/95 backdrop-blur-md px-3.5 py-2 rounded-2xl shadow-xl border border-mist-border z-20 flex items-center gap-2.5">
-                <div className="w-7 h-7 rounded-xl bg-forest-soft flex items-center justify-center text-forest shrink-0">
-                  <Leaf size={16} />
+              <div ref={badge1Ref} className="absolute -top-3 left-0 sm:-left-3 md:-left-6 scale-90 sm:scale-100 origin-left bg-white/95 backdrop-blur-md px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-2xl shadow-xl border border-mist-border z-20 flex items-center gap-2 sm:gap-2.5">
+                <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-xl bg-forest-soft flex items-center justify-center text-forest shrink-0">
+                  <Leaf size={14} className="sm:w-4 sm:h-4" />
                 </div>
                 <div>
-                  <p className="text-[11px] font-extrabold text-gray-900 leading-tight">100% Produk Lokal</p>
-                  <p className="text-[9px] text-forest font-semibold">Segar Setiap Hari</p>
+                  <p className="text-[10px] sm:text-[11px] font-extrabold text-gray-900 leading-tight">100% Produk Lokal</p>
+                  <p className="text-[8px] sm:text-[9px] text-forest font-semibold">Segar Setiap Hari</p>
                 </div>
               </div>
 
               {/* Floating Chip 2 */}
-              <div ref={badge2Ref} className="absolute -bottom-3 -right-3 md:-right-6 bg-white/95 backdrop-blur-md px-3.5 py-2 rounded-2xl shadow-xl border border-mist-border z-20 flex items-center gap-2.5">
-                <div className="w-7 h-7 rounded-xl bg-honey-soft flex items-center justify-center text-honey-dark shrink-0">
-                  <Zap size={16} className="fill-honey" />
+              <div ref={badge2Ref} className="absolute -bottom-3 right-0 sm:-right-3 md:-right-6 scale-90 sm:scale-100 origin-right bg-white/95 backdrop-blur-md px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-2xl shadow-xl border border-mist-border z-20 flex items-center gap-2 sm:gap-2.5">
+                <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-xl bg-honey-soft flex items-center justify-center text-honey-dark shrink-0">
+                  <Zap size={14} className="fill-honey sm:w-4 sm:h-4" />
                 </div>
                 <div>
-                  <p className="text-[11px] font-extrabold text-gray-900 leading-tight">Pengiriman Cepat</p>
-                  <p className="text-[9px] text-honey-dark font-semibold">Ke Seluruh Indonesia</p>
+                  <p className="text-[10px] sm:text-[11px] font-extrabold text-gray-900 leading-tight">Pengiriman Cepat</p>
+                  <p className="text-[8px] sm:text-[9px] text-honey-dark font-semibold">Ke Seluruh Indonesia</p>
                 </div>
               </div>
 

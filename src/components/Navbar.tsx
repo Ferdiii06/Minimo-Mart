@@ -232,7 +232,7 @@ function Navbar() {
 
                         {/* Hasil pencarian */}
                         {showSearchResults && (
-                            <div className="absolute top-full left-0 w-full md:w-80 bg-white shadow-xl rounded-lg mt-2 z-[60] max-h-80 overflow-y-auto border border-gray-100">
+                            <div className="fixed left-3 right-3 top-28 sm:top-full sm:left-0 sm:right-auto sm:absolute w-auto sm:w-80 bg-white shadow-xl rounded-2xl sm:rounded-lg mt-2 z-[60] max-h-80 overflow-y-auto border border-gray-100">
                                 {searchResults.length > 0 ? (
                                     <ul className="divide-y divide-gray-100">
                                         {searchResults.map((product) => (
@@ -281,7 +281,7 @@ function Navbar() {
                         
                         {/* Dropdown Notifikasi */}
                         {showNotifications && (
-                            <div className="absolute right-0 mt-2 w-80 sm:w-96 bg-white shadow-2xl rounded-2xl p-4 z-[70] border border-mist-border">
+                            <div className="fixed left-3 right-3 top-28 sm:top-auto sm:left-auto sm:right-0 sm:absolute mt-2 sm:w-96 bg-white shadow-2xl rounded-2xl p-4 z-[70] border border-mist-border max-h-[80vh] flex flex-col">
                                 <div className="flex justify-between items-center mb-3 border-b border-mist-border pb-2.5">
                                     <div className="flex items-center gap-2">
                                         <h3 className="text-base font-bold text-gray-900">Notifikasi</h3>
@@ -373,7 +373,7 @@ function Navbar() {
 
                         {/* Dropdown Akun Pengguna */}
                         {showUserMenu && (
-                            <div className="absolute right-0 mt-2 w-72 bg-white shadow-2xl rounded-2xl p-4 z-[70] border border-mist-border animate-in fade-in zoom-in-95 duration-150">
+                            <div className="fixed left-3 right-3 top-28 sm:top-auto sm:left-auto sm:right-0 sm:absolute mt-2 sm:w-72 bg-white shadow-2xl rounded-2xl p-4 z-[70] border border-mist-border max-h-[85vh] overflow-y-auto animate-in fade-in zoom-in-95 duration-150">
                                 {/* Header User Card */}
                                 <div className="flex items-center gap-3 pb-3 border-b border-mist-border mb-3">
                                     <div className="w-11 h-11 rounded-full bg-forest text-white font-black text-base flex items-center justify-center shadow-sm">
@@ -473,7 +473,7 @@ function Navbar() {
 
                         {/* Dropdown Keranjang */}
                         {showCart && (
-                            <div className="absolute right-0 mt-2 w-72 sm:w-80 bg-white shadow-2xl rounded-2xl p-4 z-[70] border border-mist-border">
+                            <div className="fixed left-3 right-3 top-28 sm:top-auto sm:left-auto sm:right-0 sm:absolute mt-2 sm:w-80 bg-white shadow-2xl rounded-2xl p-4 z-[70] border border-mist-border max-h-[80vh] flex flex-col">
                                 <div className="flex justify-between items-center mb-4 border-b border-mist-border pb-2">
                                     <h3 className="text-lg font-bold text-gray-900">Keranjang</h3>
                                     <button onClick={() => setShowCart(false)} className="text-gray-400 hover:text-gray-600 cursor-pointer">&times;</button>
@@ -519,7 +519,7 @@ function Navbar() {
             {/* Navigasi Link - SEKARANG BISA DIPENCET */}
             <nav className="w-full bg-white border-b border-gray-200 overflow-x-auto whitespace-nowrap scrollbar-hide z-50 relative">
                 <div className="max-w-7xl mx-auto px-4">
-                    <div className="flex justify-start md:justify-center items-center h-14 space-x-8 md:space-x-12">
+                    <div className="flex justify-start md:justify-center items-center h-12 md:h-14 space-x-6 sm:space-x-8 md:space-x-12 px-1 sm:px-0">
                         {menuItems.map((item) => {
                             const isActive = location.pathname === '/' && activeSection === item.sectionId;
                             return (
@@ -541,7 +541,7 @@ function Navbar() {
                                 
                                 {/* Mega Menu untuk Kategori */}
                                 {item.name === 'Kategori' && (
-                                    <div className="absolute top-full left-0 w-[500px] bg-white shadow-xl rounded-2xl p-6 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[80] border border-mist-border grid grid-cols-3 gap-6 transform translate-y-2 group-hover:translate-y-0 text-left">
+                                    <div className="hidden md:grid absolute top-full left-0 w-[500px] bg-white shadow-xl rounded-2xl p-6 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-[80] border border-mist-border grid-cols-3 gap-6 transform translate-y-2 group-hover:translate-y-0 text-left">
                                         <div>
                                             <h4 className="font-bold text-gray-800 mb-3 border-b border-mist-border pb-2 text-sm">Bahan Segar</h4>
                                             <ul className="space-y-2.5 text-sm text-gray-600">

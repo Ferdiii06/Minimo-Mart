@@ -198,33 +198,33 @@ export default function AppDownload() {
             {/* Floating Badge 1 - Order Status */}
             <div 
               ref={floatBadge1Ref}
-              className="absolute -top-4 -left-4 sm:left-4 z-20 bg-white text-gray-800 px-3.5 py-2.5 rounded-2xl shadow-2xl border border-mist-border flex items-center gap-2.5 max-w-[210px]"
+              className="absolute -top-4 left-0 sm:left-4 z-20 bg-white text-gray-800 px-3 sm:px-3.5 py-2 sm:py-2.5 rounded-2xl shadow-2xl border border-mist-border flex items-center gap-2 sm:gap-2.5 max-w-[190px] sm:max-w-[210px] scale-90 sm:scale-100 origin-top-left"
             >
-              <div className="w-8 h-8 rounded-xl bg-forest-soft text-forest flex items-center justify-center shrink-0">
-                <Truck size={18} />
+              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-forest-soft text-forest flex items-center justify-center shrink-0">
+                <Truck size={16} className="sm:w-[18px] sm:h-[18px]" />
               </div>
               <div className="text-left">
-                <p className="text-[10px] font-bold text-forest uppercase tracking-wider">Sedang Dikirim</p>
-                <p className="text-xs font-bold text-gray-900 truncate">Paket Sayur Segar</p>
+                <p className="text-[9px] sm:text-[10px] font-bold text-forest uppercase tracking-wider">Sedang Dikirim</p>
+                <p className="text-[11px] sm:text-xs font-bold text-gray-900 truncate">Paket Sayur Segar</p>
               </div>
             </div>
 
             {/* Floating Badge 2 - Promo Alert */}
             <div 
               ref={floatBadge2Ref}
-              className="absolute -bottom-4 -right-4 sm:right-4 z-20 bg-white text-gray-800 px-3.5 py-2.5 rounded-2xl shadow-2xl border border-mist-border flex items-center gap-2.5"
+              className="absolute -bottom-4 right-0 sm:right-4 z-20 bg-white text-gray-800 px-3 sm:px-3.5 py-2 sm:py-2.5 rounded-2xl shadow-2xl border border-mist-border flex items-center gap-2 sm:gap-2.5 scale-90 sm:scale-100 origin-bottom-right"
             >
-              <div className="w-8 h-8 rounded-xl bg-honey-soft text-honey-dark flex items-center justify-center shrink-0">
-                <Tag size={18} />
+              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-honey-soft text-honey-dark flex items-center justify-center shrink-0">
+                <Tag size={16} className="sm:w-[18px] sm:h-[18px]" />
               </div>
               <div className="text-left">
-                <p className="text-[10px] font-bold text-honey-dark uppercase tracking-wider">Kupon Siap Pakai</p>
-                <p className="text-xs font-bold text-gray-900">Diskon 50% Aktif</p>
+                <p className="text-[9px] sm:text-[10px] font-bold text-honey-dark uppercase tracking-wider">Kupon Siap Pakai</p>
+                <p className="text-[11px] sm:text-xs font-bold text-gray-900">Diskon 50% Aktif</p>
               </div>
             </div>
 
             {/* Smartphone Frame Outer */}
-            <div className="w-[280px] sm:w-[310px] h-[580px] bg-slate-900 rounded-[44px] p-3 shadow-2xl shadow-black/60 border-4 border-slate-700/80 relative">
+            <div className="w-[260px] sm:w-[310px] h-[530px] sm:h-[580px] bg-slate-900 rounded-[40px] sm:rounded-[44px] p-2.5 sm:p-3 shadow-2xl shadow-black/60 border-4 border-slate-700/80 relative">
               {/* Dynamic Island Notch */}
               <div className="absolute top-5 left-1/2 -translate-x-1/2 w-24 h-4 bg-black rounded-full z-30 flex items-center justify-end px-2">
                 <div className="w-2 h-2 rounded-full bg-emerald-500/80 animate-pulse" />

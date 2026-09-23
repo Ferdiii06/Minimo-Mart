@@ -450,24 +450,6 @@ export const productsData: Product[] = [
     image: "/paha%20daging%20ayam.jpg",
     description: "Paha ayam bawah (drumstick) mentah segar dan juicy, bersih siap bumbu untuk ayam goreng krispi atau ungkep rempah.",
     category: "Daging"
-  },
-  {
-    id: 49,
-    name: "Iga Sapi Mentah Segar",
-    weight: "1 kg",
-    price: 98000,
-    image: "https://images.unsplash.com/photo-1544025162-d76694265947?w=600",
-    description: "Potongan tulang iga sapi mentah segar dengan lapisan daging tebal dan gurih, bersih tanpa bahan pengawet.",
-    category: "Daging"
-  },
-  {
-    id: 50,
-    name: "Bebek Mentah Utuh Segar",
-    weight: "1 ekor (1.2kg)",
-    price: 58000,
-    image: "https://images.unsplash.com/photo-1516467508483-a7212febe31a?w=600",
-    description: "Karkas bebek potong mentah segar utuh, sudah bersih bulu dan jeroan, aroma segar alami siap diolah.",
-    category: "Daging"
   }
 ];
 

@@ -57,18 +57,18 @@ export default function Promo() {
       <div className="max-w-7xl mx-auto">
         
         {/* Header Section dengan dekorasi */}
-        <div className="text-center mb-12 relative">
+        <div className="text-center mb-8 md:mb-12 relative">
           <div className="absolute inset-0 flex items-center justify-center -z-10 opacity-5">
             <Sparkles size={120} className="text-forest" />
           </div>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-3 tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 mb-2 sm:mb-3 tracking-tight">
             Promo Spesial
           </h2>
-          <p className="text-gray-500 text-sm md:text-base max-w-2xl mx-auto">
+          <p className="text-gray-500 text-xs sm:text-sm md:text-base max-w-2xl mx-auto px-2">
             Dapatkan diskon menarik untuk berbagai produk pilihan. 
             Gunakan kode promo sebelum checkout!
           </p>
-          <div className="w-24 h-1.5 bg-forest mx-auto mt-4 rounded-full"></div>
+          <div className="w-20 sm:w-24 h-1.5 bg-forest mx-auto mt-3 sm:mt-4 rounded-full"></div>
         </div>
 
         {activePromos.length === 0 ? (
@@ -86,11 +86,11 @@ export default function Promo() {
           </div>
         ) : (
           <>
-            <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-6xl mx-auto">
               {activePromos.map((promo) => (
                 <div 
                   key={promo.id} 
-                  className="relative h-64 md:h-72 rounded-3xl overflow-hidden group cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500 border border-mist-border/50"
+                  className="relative h-60 sm:h-64 md:h-72 rounded-3xl overflow-hidden group cursor-pointer shadow-md hover:shadow-2xl transition-all duration-500 border border-mist-border/50"
                   onClick={() => handlePromoClick(promo.category)}
                 >
                   {/* Background Image */}
@@ -104,10 +104,10 @@ export default function Promo() {
                   <div className="absolute inset-0 bg-gradient-to-t from-gray-950/95 via-gray-950/60 to-forest/20 opacity-85 group-hover:opacity-95 transition-opacity duration-300"></div>
 
                   {/* Content */}
-                  <div className="absolute inset-0 p-5 md:p-6 flex flex-col justify-between">
+                  <div className="absolute inset-0 p-4 sm:p-5 md:p-6 flex flex-col justify-between">
                     {/* Top part: Discount Badge */}
                     <div className="flex justify-between items-start">
-                      <span className="bg-white/20 backdrop-blur-md border border-white/30 text-white text-[10px] md:text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider">
+                      <span className="bg-white/20 backdrop-blur-md border border-white/30 text-white text-[10px] md:text-xs font-bold px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full uppercase tracking-wider">
                         {promo.category || 'Spesial'}
                       </span>
                       <div className="bg-honey text-gray-950 text-xs md:text-sm font-black px-3.5 py-1.5 rounded-full shadow-lg">

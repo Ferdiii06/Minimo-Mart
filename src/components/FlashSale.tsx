@@ -104,32 +104,32 @@ export default function FlashSale() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         
         {/* Header Flash Sale */}
-        <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
-          <div className="flex items-center gap-3">
-            <div ref={zapRef} className="p-2.5 bg-honey text-gray-950 rounded-2xl shadow-xs">
-              <Zap className="fill-gray-950 text-gray-950" size={24} />
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 md:mb-8 gap-4">
+          <div className="flex items-center gap-2.5 sm:gap-3">
+            <div ref={zapRef} className="p-2 sm:p-2.5 bg-honey text-gray-950 rounded-2xl shadow-xs shrink-0">
+              <Zap className="fill-gray-950 text-gray-950 w-5 h-5 sm:w-6 sm:h-6" />
             </div>
             <div>
-              <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 tracking-tight">Flash Sale Kilat</h2>
-              <p className="text-xs text-forest font-bold tracking-wide">Diskon spesial hingga 50% setiap hari</p>
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-gray-900 tracking-tight">Flash Sale Kilat</h2>
+              <p className="text-[11px] sm:text-xs text-forest font-bold tracking-wide">Diskon spesial hingga 50% setiap hari</p>
             </div>
           </div>
           
-          <div className="flex items-center gap-4 bg-white px-5 py-2.5 rounded-full shadow-xs border border-honey/30">
-            <div className="flex items-center gap-2 text-gray-700 text-xs sm:text-sm font-semibold">
-              <Clock size={18} className="text-honey-dark" />
-              <span>Berakhir dalam:</span>
+          <div className="flex items-center justify-between sm:justify-start w-full sm:w-auto gap-3 sm:gap-4 bg-white px-4 sm:px-5 py-2 sm:py-2.5 rounded-full shadow-xs border border-honey/30">
+            <div className="flex items-center gap-1.5 sm:gap-2 text-gray-700 text-xs sm:text-sm font-semibold">
+              <Clock size={16} className="text-honey-dark sm:w-[18px]" />
+              <span className="text-[11px] sm:text-xs">Berakhir dalam:</span>
             </div>
-            <div className="flex items-center gap-1.5 font-mono">
-              <div className="bg-forest text-white font-black px-2.5 py-1 rounded-lg text-sm shadow-xs">
+            <div className="flex items-center gap-1 sm:gap-1.5 font-mono">
+              <div className="bg-forest text-white font-black px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg text-xs sm:text-sm shadow-xs">
                 {formatTime(timeLeft.hours)}
               </div>
-              <span className="text-forest font-bold">:</span>
-              <div className="bg-forest text-white font-black px-2.5 py-1 rounded-lg text-sm shadow-xs">
+              <span className="text-forest font-bold text-xs sm:text-sm">:</span>
+              <div className="bg-forest text-white font-black px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg text-xs sm:text-sm shadow-xs">
                 {formatTime(timeLeft.minutes)}
               </div>
-              <span className="text-forest font-bold">:</span>
-              <div className="bg-forest text-white font-black px-2.5 py-1 rounded-lg text-sm shadow-xs">
+              <span className="text-forest font-bold text-xs sm:text-sm">:</span>
+              <div className="bg-forest text-white font-black px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-lg text-xs sm:text-sm shadow-xs">
                 {formatTime(timeLeft.seconds)}
               </div>
             </div>
@@ -137,17 +137,17 @@ export default function FlashSale() {
         </div>
 
         {/* Daftar Produk Flash Sale */}
-        <div ref={cardsRef} className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+        <div ref={cardsRef} className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
           {flashSaleProducts.map((product) => (
             <div key={product.id} className="bg-white rounded-2xl shadow-xs hover:shadow-xl transition-all duration-300 overflow-hidden border border-mist-border hover:border-honey/60 group relative flex flex-col justify-between">
               {/* Badge Diskon */}
-              <div className="absolute top-3 right-3 bg-honey text-gray-950 text-xs font-black px-2.5 py-1 rounded-full z-10 shadow-xs tracking-wider">
+              <div className="absolute top-2.5 right-2.5 sm:top-3 sm:right-3 bg-honey text-gray-950 text-[10px] sm:text-xs font-black px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full z-10 shadow-xs tracking-wider">
                 50% OFF
               </div>
               
               <div>
                 <Link to={`/product/${product.id}`}>
-                  <div className="relative overflow-hidden aspect-square bg-mist-surface/50 flex items-center justify-center p-4">
+                  <div className="relative overflow-hidden aspect-square bg-mist-surface/50 flex items-center justify-center p-2.5 sm:p-4">
                     <img 
                       src={product.image} 
                       alt={product.name}
@@ -156,37 +156,37 @@ export default function FlashSale() {
                   </div>
                 </Link>
                 
-                <div className="p-4">
+                <div className="p-3 sm:p-4">
                   <Link to={`/product/${product.id}`}>
-                    <h3 className="font-semibold text-gray-800 mb-1 truncate hover:text-forest transition text-sm sm:text-base">
+                    <h3 className="font-semibold text-gray-800 mb-0.5 sm:mb-1 truncate hover:text-forest transition text-xs sm:text-sm md:text-base">
                       {product.name}
                     </h3>
                   </Link>
-                  <p className="text-xs text-gray-500 mb-2">{product.weight}</p>
+                  <p className="text-[10px] sm:text-xs text-gray-500 mb-1.5 sm:mb-2">{product.weight}</p>
                   
-                  <div className="mb-3">
-                    <p className="text-xs text-gray-400 line-through">
+                  <div className="mb-2 sm:mb-3">
+                    <p className="text-[10px] sm:text-xs text-gray-400 line-through">
                       Rp {formatNumber(product.originalPrice)}
                     </p>
-                    <p className="text-base sm:text-lg font-extrabold text-forest">
+                    <p className="text-sm sm:text-base md:text-lg font-extrabold text-forest">
                       Rp {formatNumber(product.price)}
                     </p>
                   </div>
 
-                  <div className="mb-2 bg-honey-light rounded-full h-1.5 overflow-hidden">
+                  <div className="mb-1.5 sm:mb-2 bg-honey-light rounded-full h-1 sm:h-1.5 overflow-hidden">
                     <div className="bg-honey-dark h-full w-3/4 rounded-full"></div>
                   </div>
-                  <p className="text-[11px] text-honey-dark font-bold mb-3 text-center">Tersisa 5 barang!</p>
+                  <p className="text-[10px] sm:text-[11px] text-honey-dark font-bold mb-2 sm:mb-3 text-center">Tersisa 5 barang!</p>
                 </div>
               </div>
 
-              <div className="px-4 pb-4">
+              <div className="px-3 sm:px-4 pb-3 sm:pb-4">
                 <button
                   onClick={() => handleAddFlashSale(product)}
-                  className="w-full bg-forest-soft hover:bg-forest text-forest hover:text-white border border-forest/20 hover:border-forest py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center justify-center gap-2 group/btn cursor-pointer shadow-xs active:scale-95"
+                  className="w-full bg-forest-soft hover:bg-forest text-forest hover:text-white border border-forest/20 hover:border-forest py-2 sm:py-2.5 rounded-xl text-[11px] sm:text-xs md:text-sm font-bold transition-all flex items-center justify-center gap-1.5 group/btn cursor-pointer shadow-xs active:scale-95"
                 >
-                  <ShoppingCart size={16} className="group-hover/btn:-translate-y-0.5 transition-transform" />
-                  <span>Tambah ke Keranjang</span>
+                  <ShoppingCart size={15} className="group-hover/btn:-translate-y-0.5 transition-transform shrink-0" />
+                  <span className="truncate">Tambah ke Keranjang</span>
                 </button>
               </div>
             </div>

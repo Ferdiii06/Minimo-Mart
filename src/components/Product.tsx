@@ -62,12 +62,12 @@ function ProductCard({ product }: { product: Product }) {
   };
 
   return (
-    <div className="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition duration-300 p-4 md:p-5 flex flex-col">
+    <div className="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition duration-300 p-3 sm:p-4 md:p-5 flex flex-col">
       
       {/* Container Gambar */}
       <div 
         onClick={() => navigate(`/product/${product.id}`)}
-        className="h-32 md:h-40 bg-gray-50 rounded-xl overflow-hidden flex items-center justify-center mb-4 cursor-pointer hover:opacity-90 transition"
+        className="h-28 sm:h-36 md:h-40 bg-gray-50 rounded-xl overflow-hidden flex items-center justify-center mb-3 sm:mb-4 cursor-pointer hover:opacity-90 transition"
       >
         <img
           ref={imgRef}
@@ -80,30 +80,30 @@ function ProductCard({ product }: { product: Product }) {
       {/* Nama Produk */}
       <h3 
         onClick={() => navigate(`/product/${product.id}`)}
-        className="text-base md:text-lg font-semibold text-gray-800 truncate cursor-pointer hover:text-forest transition"
+        className="text-sm sm:text-base md:text-lg font-semibold text-gray-800 truncate cursor-pointer hover:text-forest transition"
       >
         {product.name}
       </h3>
-      <p className="text-xs md:text-sm text-gray-500 mb-2">{product.weight}</p>
-      <p className="text-xl md:text-2xl font-bold text-forest mb-4">
+      <p className="text-[11px] sm:text-xs md:text-sm text-gray-500 mb-1 sm:mb-2">{product.weight}</p>
+      <p className="text-base sm:text-xl md:text-2xl font-bold text-forest mb-2 sm:mb-4">
         Rp {formatRupiah(product.price)}
       </p>
 
       {/* Action Buttons */}
-      <div className="mt-auto flex items-center justify-between gap-2">
-        <div className="flex items-center border border-gray-200 rounded-full px-2 py-1 bg-white">
+      <div className="mt-auto flex items-center justify-between gap-1.5 sm:gap-2">
+        <div className="flex items-center border border-gray-200 rounded-full px-1.5 sm:px-2 py-0.5 sm:py-1 bg-white">
           <button
             onClick={decrease}
-            className="w-6 h-6 md:w-8 md:h-8 flex items-center justify-center text-gray-500 hover:text-forest cursor-pointer"
+            className="w-5 h-5 sm:w-7 sm:h-7 md:w-8 md:h-8 flex items-center justify-center text-xs sm:text-base text-gray-500 hover:text-forest cursor-pointer"
           >
             -
           </button>
-          <span className="w-6 md:w-8 text-center font-medium text-sm md:text-base text-gray-800">
+          <span className="w-5 sm:w-6 md:w-8 text-center font-medium text-xs sm:text-sm md:text-base text-gray-800">
             {qty}
           </span>
           <button
             onClick={increase}
-            className="w-6 h-6 md:w-8 md:h-8 flex items-center justify-center text-gray-500 hover:text-forest cursor-pointer"
+            className="w-5 h-5 sm:w-7 sm:h-7 md:w-8 md:h-8 flex items-center justify-center text-xs sm:text-base text-gray-500 hover:text-forest cursor-pointer"
           >
             +
           </button>
@@ -111,9 +111,9 @@ function ProductCard({ product }: { product: Product }) {
 
         <button
           onClick={handleAddToCart}
-          className="bg-forest hover:bg-forest-dark text-white p-2.5 md:p-3 rounded-full transition shadow-md hover:shadow-forest/30 hover:scale-105 cursor-pointer active:scale-95"
+          className="bg-forest hover:bg-forest-dark text-white p-2 sm:p-2.5 md:p-3 rounded-full transition shadow-md hover:shadow-forest/30 hover:scale-105 cursor-pointer active:scale-95 shrink-0"
         >
-          <ShoppingCart size={16} className="md:w-[18px]" />
+          <ShoppingCart size={15} className="sm:w-[17px] sm:h-[17px]" />
         </button>
       </div>
     </div>
@@ -168,12 +168,12 @@ export default function Product() {
         </div>
 
         {/* Filter Kategori Tabs */}
-        <div className="flex items-center gap-2.5 overflow-x-auto pb-3 mb-6 scrollbar-hide">
+        <div className="flex items-center gap-2 overflow-x-auto pb-3 mb-6 scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0">
           {categoryTabs.map((tab) => (
             <button
               key={tab}
               onClick={() => setSelectedCategory(tab)}
-              className={`px-4 py-2 rounded-full text-xs md:text-sm font-semibold whitespace-nowrap transition-all duration-200 cursor-pointer ${
+              className={`px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs md:text-sm font-semibold whitespace-nowrap transition-all duration-200 cursor-pointer ${
                 selectedCategory === tab
                   ? "bg-forest text-white shadow-md shadow-forest/25 scale-105"
                   : "bg-white text-gray-700 hover:bg-forest-soft hover:text-forest border border-mist-border"
@@ -185,7 +185,7 @@ export default function Product() {
         </div>
 
         {/* Grid System */}
-        <div ref={gridRef} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
+        <div ref={gridRef} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
           {filteredProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
